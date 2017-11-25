@@ -11,6 +11,10 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'SpotifyWebAPI\\' => 14,
+        ),
         'A' => 
         array (
             'Abraham\\TwitterOAuth\\' => 21,
@@ -18,6 +22,10 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
     );
 
     public static $prefixDirsPsr4 = array (
+        'SpotifyWebAPI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src',
+        ),
         'Abraham\\TwitterOAuth\\' => 
         array (
             0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
@@ -49,9 +57,18 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'App\\Controllers\\TopMovieController' => __DIR__ . '/../..' . '/app/controllers/TopMovieController.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'App\\Model\\SpotifyModel' => __DIR__ . '/../..' . '/app/models/SpotifyModel.php',
+        'App\\Model\\TwitterModel' => __DIR__ . '/../..' . '/app/models/TwitterModel.php',
         'ComposerAutoloaderInitb6a6d478fefe3810f7e1667189769d54' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInitb6a6d478fefe3810f7e1667189769d54' => __DIR__ . '/..' . '/composer/autoload_static.php',
+        'RequestTest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/RequestTest.php',
+        'SessionTest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/SessionTest.php',
+        'SpotifyWebAPITest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/SpotifyWebAPITest.php',
+        'SpotifyWebAPI\\Request' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Request.php',
+        'SpotifyWebAPI\\Session' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/Session.php',
+        'SpotifyWebAPI\\SpotifyWebAPI' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPI.php',
+        'SpotifyWebAPI\\SpotifyWebAPIException' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/src/SpotifyWebAPIException.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

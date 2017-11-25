@@ -6,6 +6,7 @@
         "files": ["core/helpers.php"]
     },
     "require": {
-        "abraham/twitteroauth": "^0.7.4"
+        "abraham/twitteroauth": "^0.7.4",
+        "jwilsson/spotify-web-api-php": "^2.0"
     }
 }
