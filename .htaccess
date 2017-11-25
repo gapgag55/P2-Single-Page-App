@@ -1,7 +1,7 @@
 RewriteEngine On
 
 RewriteCond %{HTTP:X-Requested-With} =XMLHttpRequest
-RewriteRule ^P2/(.*)/?(\d*) /server/server.php?page=$1&id=$2
+RewriteRule ^P2/([\w\-]+)/?(\d*) /server/server.php?page=$1&id=$2
 
 RewriteCond %{HTTP:X-Requested-With} !=XMLHttpRequest
 RewriteRule (\w+)/(\d+) index.html
