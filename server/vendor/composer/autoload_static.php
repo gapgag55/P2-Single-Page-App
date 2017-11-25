@@ -10,7 +10,38 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         '5ec26a44593cffc3089bdca7ce7a56c3' => __DIR__ . '/../..' . '/core/helpers.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'Abraham\\TwitterOAuth\\' => 21,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Abraham\\TwitterOAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
+        ),
+    );
+
     public static $classMap = array (
+        'Abraham\\TwitterOAuth\\Config' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Config.php',
+        'Abraham\\TwitterOAuth\\Consumer' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Consumer.php',
+        'Abraham\\TwitterOAuth\\HmacSha1' => __DIR__ . '/..' . '/abraham/twitteroauth/src/HmacSha1.php',
+        'Abraham\\TwitterOAuth\\Request' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Request.php',
+        'Abraham\\TwitterOAuth\\Response' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Response.php',
+        'Abraham\\TwitterOAuth\\SignatureMethod' => __DIR__ . '/..' . '/abraham/twitteroauth/src/SignatureMethod.php',
+        'Abraham\\TwitterOAuth\\Test\\TwitterOAuthTest' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/TwitterOAuthTest.php',
+        'Abraham\\TwitterOAuth\\Tests\\AbstractSignatureMethodTest' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/AbstractSignatureMethodTest.php',
+        'Abraham\\TwitterOAuth\\Tests\\ConsumerTest' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/ConsumerTest.php',
+        'Abraham\\TwitterOAuth\\Tests\\HmacSha1Test' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/HmacSha1Test.php',
+        'Abraham\\TwitterOAuth\\Tests\\JsonDecoderTest' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/Util/JsonDecoderTest.php',
+        'Abraham\\TwitterOAuth\\Tests\\TokenTest' => __DIR__ . '/..' . '/abraham/twitteroauth/tests/TokenTest.php',
+        'Abraham\\TwitterOAuth\\Token' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Token.php',
+        'Abraham\\TwitterOAuth\\TwitterOAuth' => __DIR__ . '/..' . '/abraham/twitteroauth/src/TwitterOAuth.php',
+        'Abraham\\TwitterOAuth\\TwitterOAuthException' => __DIR__ . '/..' . '/abraham/twitteroauth/src/TwitterOAuthException.php',
+        'Abraham\\TwitterOAuth\\Util' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util.php',
+        'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
         'App\\Controllers\\ComingMovieController' => __DIR__ . '/../..' . '/app/controllers/ComingMovieController.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/controllers/MovieController.php',
@@ -26,6 +57,8 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$classMap;
 
         }, null, ClassLoader::class);
