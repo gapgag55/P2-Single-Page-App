@@ -1,0 +1,91 @@
+/*========================
+|****  NOMALIZATION *****|
+=========================*/
+ul {
+  padding: 0;
+}
+
+
+/*========================
+|*******  Default *******|
+=========================*/
+body {
+    color: #FFF;
+    font-family: 'HelveticaNeueLight';
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/*========================
+|******  HOME PAGE *******|
+=========================*/
+.home-page {
+    padding: 60px 0;
+}
+
+.home-page h1,
+.home-page h2 {
+    color: #FFE606;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+    text-align: center;
+}
+
+.home-page h1 {
+    font-family: 'HelveticaNeueBold';
+    font-size: 60px;
+}
+
+.home-page h2 {
+    font-family: 'HelveticaNeueLight';
+    font-size: 20px;
+    color: #FFE606;
+}
+
+.search-box {
+    max-width: 50%;
+    margin: 40px auto;
+    position: relative;
+}
+
+.search-box input,
+.search-box button {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+    border-radius: 100px;
+    border: 0;
+    outline: 0;
+    padding: 15px 30px;
+}
+
+.search-box input {
+    width: 100%;
+    padding-right: 120px;
+    font-family: 'HelveticaNeueRegular';
+    background-image: linear-gradient(-180deg, #879AC6 0%, #627194 100%);
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: 'HelveticaNeueBold';
+    background-image: linear-gradient(-180deg, #FFE606 0%, #A89C1D 100%);
+}
+
+/*========================
+|******  MOVIE LISTS ****|
+=========================*/
+.movie-list ul {
+    display: flex;
+}
+
+.movie-list li {
+    padding: 0 20px;
+}
+
+.poster-pic {
+    height: 280px;
+    background-size: cover;
+    border-radius: 10px;
+}
