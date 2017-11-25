@@ -14,6 +14,7 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'App\\Controllers\\ComingMovieController' => __DIR__ . '/../..' . '/app/controllers/ComingMovieController.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/controllers/MovieController.php',
+        'App\\Controllers\\NotFoundController' => __DIR__ . '/../..' . '/app/controllers/NotFoundController.php',
         'App\\Controllers\\TopMovieController' => __DIR__ . '/../..' . '/app/controllers/TopMovieController.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',

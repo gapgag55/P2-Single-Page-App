@@ -11,7 +11,7 @@
   <ul>
     <?php for($i = 0; $i < 6; $i++): ?>
       <li>
-        <a href="/movie/<?= $i; ?>" name="/movie/<?= $i; ?>">
+        <a href="/movie/<?= $i; ?>">
           <div class="poster-pic" style="background-image:url(public/images/thor.jpg);"></div>
           <h3>Thor ranknarok</h3>
           <span>Fantasy 152 mins</span>
@@ -20,3 +20,8 @@
     <?php endfor; ?>
   </ul>
 </div>
+
+
+<script>
+ 
+</script>

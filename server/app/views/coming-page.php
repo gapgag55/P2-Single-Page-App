@@ -1,3 +1,3 @@
 <h1>
-    <a href="/homepage" name="Home">Coming Soon Movie</a>
+    <a href="/home">Coming Soon Movie</a>
 </h1>

@@ -9,6 +9,7 @@ return array(
     'App\\Controllers\\ComingMovieController' => $baseDir . '/app/controllers/ComingMovieController.php',
     'App\\Controllers\\HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'App\\Controllers\\MovieController' => $baseDir . '/app/controllers/MovieController.php',
+    'App\\Controllers\\NotFoundController' => $baseDir . '/app/controllers/NotFoundController.php',
     'App\\Controllers\\TopMovieController' => $baseDir . '/app/controllers/TopMovieController.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',

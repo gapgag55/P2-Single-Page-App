@@ -1,4 +1,4 @@
 <h1>
     <?= $id; ?>
-    <a href="/home" name="/">Movie Page</a>
+    <a href="/home">Movie Page</a>
 </h1>

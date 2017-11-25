@@ -8,7 +8,7 @@ Router.prototype.load = function () {
 
   if (name == '/') {
     return this.request('/home', { 
-      name: '/' 
+      name: '/'
     })
   }
 
@@ -24,7 +24,9 @@ Router.prototype.render = function (response) {
     e.preventDefault()
 
     let url  = $(this).attr('href')
-    let name = $(this).attr('name')
+    name = url
+
+    if (name == '/home') name = '/'
 
     self.request(url, {name})
     return false
@@ -32,13 +34,10 @@ Router.prototype.render = function (response) {
 }
 
 Router.prototype.request = function (url, options) {
-
   $.ajax({
     url: '/P2' + url
   }) 
   .done(function (response) {
-
-    console.log(history)
 
     history.pushState(
       {data: response},

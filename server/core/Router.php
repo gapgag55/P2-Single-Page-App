@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Core;
+use Exception;
 
 class Router 
 {
@@ -57,7 +58,7 @@ class Router
      * @param string $requestType
      */
     public function direct($uri, $requestType) 
-    {   
+    {  
 
         /*
          * Remove Folder Name
@@ -70,7 +71,7 @@ class Router
             );
         }
 
-        throw new Exception('No route defined for this URI.');
+        $this->callAction('NotFoundController', 'index');
     }
 
     /**
