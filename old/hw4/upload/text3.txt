@@ -1,0 +1,127 @@
+Faculty of Information and
+Communication Technology
+ITCS210-Homework 4
+Words and Frequencies
+Instructions
+? Develop webpage using PHP, AJAX and HTML to allow user to
+upload a text file.
+? Extract words from the text file by removing the following
+stopping words
+/* Characters to be removed
+ Number: 0,1,2,3,4,5,6,7,8,9
+ Article: a, an, the
+ Pronoun: that, this, those, these
+ Verb to be: is, am, are, isn't, aren't, not, 's, s', 're,
+ Verb to have: has, have, had, hasn't, haven't, hadn't
+ Symbol: "#", "%", "&", "*", "!", "?", "."
+ Future: will, 'll, won't, shall
+ Preposition: after, in, to, on, with, into
+ carriage return: \r, \n
+ */
+? Find frequency of each extracted word and display on screen,
+AJAX should be applied.
+? Submit a renamed zip file(secX_HW4_ID5988xxx.zip) on
+http://Mycourses.ict.mahidol.ac.th.
+? Due date is on 24th November 2017, 11 p.m.
+Example of interfaces
+For uploading a file:
+After uploading a file, displaying the content of the uploaded file and showing
+the extracted words of the content (after removing stopping words):
+After clicking “Display Frequency” button, displaying each word and its
+frequency in the table.
+Marking Criteria
+The total score is 15 points
+Criteria 5 points 4 points 3 points 2 points 1 point
+1. Following
+the
+instructions
+Complete all
+instructions
+with
+thorough
+comments in
+the code
+Complete all
+instructions
+Submit a file
+but complete
+three
+instructions
+Submit a file
+but complete
+two
+instructions
+Submit a file
+but complete
+one
+instruction
+2. Applying
+knowledge
+PHP
+Applying
+Associative
+array and
+Foreach, GET
+or POST
+method,
+Upload and
+Read file,
+function, and
+other basic
+PHP syntax.
+Applying GET
+or POST
+method,
+Upload and
+Read file,
+Function, and
+other basic
+PHP syntax.
+Applying
+Upload and
+Read file,
+Function, and
+other basic
+PHP syntax.
+Applying
+Function and
+other basic
+PHP syntax.
+Applying
+basic PHP
+syntax.
+3. Applying
+knowledge of
+AJAX
+Displaying
+a server
+response of
+AJAX,
+Applying
+AJAX sending
+request to a
+server, AJAX
+object,
+JavaScript
+Function and
+DOM.
+Applying
+AJAX sending
+request to a
+server, AJAX
+object,
+JavaScript
+Function and
+DOM.
+Applying
+AJAX object,
+JavaScript
+Function and
+DOM.
+Applying
+JavaScript
+Function and
+DOM.
+Applying
+DOM in
+JavaScript
