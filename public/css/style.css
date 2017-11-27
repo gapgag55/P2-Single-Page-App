@@ -274,3 +274,6 @@ header li.is-active a:after {
     letter-spacing: 1px;
 }
 
+.w-100{
+    padding: 0.1cm;
+}
