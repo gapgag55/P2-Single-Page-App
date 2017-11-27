@@ -13,6 +13,7 @@ h3 {
 a:hover,
 a:visited {
     text-decoration: none;
+    color: #FFF;
 }
 
 /*========================
@@ -213,6 +214,10 @@ header li.is-active a:after {
     position: relative;
 }
 
+.movie-img a {
+    font-size: 25px;
+}
+
 .movie-img .icon-play {
     position: absolute;
     left: 50%;
@@ -253,6 +258,11 @@ header li.is-active a:after {
     padding: 10px 0;
     color: #FFF;
     letter-spacing: 1px;
+}
+
+.movie-title a:hover {
+    border-bottom: 1px solid #FFF;
+    padding-bottom: 2px;
 }
 
 .movie-detail {
