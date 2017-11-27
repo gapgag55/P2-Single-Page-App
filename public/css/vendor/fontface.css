@@ -71,7 +71,6 @@
 .icon-arrow-right:before {
   content: "\62";
 }
-
 .icon-arrow-left:before {
   content: "\62";
   -webkit-transform:rotateY(180deg);
@@ -79,8 +78,14 @@
   -o-transform:rotateY(180deg);
   -ms-transform:rotateY(180deg);
 }
-
-.icon-arrow-pagi:before {
+.icon-pagi-left:before {
+  content: "\63";
+  -webkit-transform:rotateY(180deg);
+  -moz-transform:rotateY(180deg);
+  -o-transform:rotateY(180deg);
+  -ms-transform:rotateY(180deg);
+}
+.icon-pagi-right:before {
   content: "\63";
 }
 .icon-email:before {
