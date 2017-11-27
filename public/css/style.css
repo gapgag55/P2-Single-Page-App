@@ -3,9 +3,16 @@
 =========================*/
 ul {
   padding: 0;
+  list-style: none;
 }
-h3{
+
+h3 {
   margin: 0;
+}
+
+a:hover,
+a:visited {
+    text-decoration: none;
 }
 
 
@@ -15,11 +22,102 @@ h3{
 body {
     color: #FFF;
     font-family: 'HelveticaNeueLight';
-    background-image: url('../images/bg.png');
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #181818;
     min-height: 100vh;
-    padding: 60px 0;
+}
+
+#app {
+    min-height: calc(100vh - 80px);
+}
+
+a {
+    color: #FFF;
+}
+
+svg {
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+  
+svg polygon {
+    stroke-dasharray: 17;
+    -webkit-animation: dash 3s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+    animation: dash 3s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+}
+  
+@-webkit-keyframes dash {
+    to {
+        stroke-dashoffset: 136;
+    }
+}
+  
+@keyframes dash {
+    to {
+        stroke-dashoffset: 136;
+    }
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}  
+
+/*========================
+|*******  Default *******|
+=========================*/
+header {
+    display: flex; 
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+header li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+header li:first-child {
+    padding-left :0;
+}
+
+header li:last-child {
+    padding-right: 0;
+}
+
+header a {
+    color: #7E7E7E;
+    display: block;
+    position: relative;
+    letter-spacing: 1.2px;
+}
+
+header li.is-active a,
+header li:hover a {
+    color: #FFF;
+}
+
+header li.is-active a:after {
+    content: '';
+    width: 70%;
+    height: 2px; 
+    background: #1DB955;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /*========================
