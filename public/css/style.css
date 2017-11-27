@@ -15,7 +15,6 @@ a:visited {
     text-decoration: none;
 }
 
-
 /*========================
 |*******  Default *******|
 =========================*/
@@ -84,6 +83,11 @@ header {
     padding: 20px 0;
 }
 
+header nav,
+header ul {
+    width: 100%;
+}
+
 header li {
     display: inline-block;
     padding: 0 10px;
@@ -95,6 +99,7 @@ header li:first-child {
 
 header li:last-child {
     padding-right: 0;
+    float: right;
 }
 
 header a {
@@ -123,157 +128,59 @@ header li.is-active a:after {
 /*========================
 |******  HOME PAGE *******|
 =========================*/
-.home-page ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
 
-.home-page h1,
-.home-page h2 {
-    color: #FFE606;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
-    text-align: center;
-}
-
-.home-page h1 {
-    font-family: 'HelveticaNeueBold';
-    font-size: 60px;
-}
-
-.home-page h2 {
-    font-family: 'HelveticaNeueLight';
-    font-size: 20px;
-    color: #FFE606;
-}
-
-.search-box {
-    max-width: 50%;
-    margin: 40px auto;
-    position: relative;
-}
-
-.search-box input,
-.search-box button {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
-    border-radius: 100px;
-    border: 0;
-    outline: 0;
-    padding: 15px 30px;
-    cursor: pointer;
-}
-
-.search-box input {
+.searching-box {
     width: 100%;
-    padding-right: 120px;
-    font-family: 'HelveticaNeueRegular';
-    background-image: linear-gradient(-180deg, #879AC6 0%, #627194 100%);
-}
-
-.search-box button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-family: 'HelveticaNeueBold';
-    background-image: linear-gradient(-180deg, #FFE606 0%, #A89C1D 100%);
-}
-
-/*========================
-|******  MOVIE LISTS ****|
-=========================*/
-.movie-list {
-    display: flex;
-    overflow: hidden;
-    margin-top: 100px;
-}
-
-.movie-list ul.poster {
-    display: flex;
-    list-style: none;
-    transform: translateX(-9.5vw);
-}
-
-.movie-list .poster li {
-    padding: 0 10px;
-    width: 17vw;
-}
-
-.movie-list .poster a {
-    font-family: 'HelveticaNeueLight';
-    text-decoration: none;
-    font-size: 20px;
+    margin-top:100px; 
+    font-size: 60px;
     color: white;
-    display: flex;
-    flex-direction: column;
+    text-align: right;
+    background: #181818;
+    border:none;
+    outline: none;
 }
 
-.movie-list .poster h3 {
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    font-size: 20px;
+.movie-list-title {
+    height: 50px;
+    font-family: 'HelveticaNeueBold';
+    font-size: 25px;
+    border-bottom: 1px solid #282828;
 }
 
-.movie-list .poster span {
-    font-family: 'HelveticaNeueLight';
-    font-size: 14px;
-    color: #A8AEC0;
-}
-
-
-ul.point li {
-    width: 12px;
-    height: 12px;
-    border-radius: 100%;
-    margin: 7px;
-    cursor: pointer;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.50);
-    background-image: linear-gradient(-180deg, #ADB6D1 3%, #1E2F67 98%);
-}
-
-ul.point li.is-active {
-    background-image: linear-gradient(-180deg, #FFE717 3%, #151926 98%);
-}
-
-.poster-pic {
-    height: 50vh;
-    background-size: cover;
-    border-radius: 10px;
-    box-shadow: 1px 2px 5px 0 rgba(0,0,0,0.50);
-    margin-bottom: 20px;
-}
-
-.button-group {
-    margin-top: 60px;
+.movie-list-body {
     display: flex;
     justify-content: center;
+    overflow: hidden;
+} 
+
+.movie {
+    padding: 20px;
 }
 
-.button-group a {
+.movie .movie-img {
+    height: 18vw;
+    width: 18vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.movie-title,
+.movie-detail,
+.movie-rating {
+    padding: 5px 0;
+    color: #B3B3B3;
+}
+
+.movie-title {
     font-family: 'HelveticaNeueBold';
-    text-decoration: none;
-    margin: 0px 5px 0px 5px ;
-    color: #FCEB43;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background-color: #1D141B;
-    display: flex;
-    align-items: center;
-    box-shadow: 1px 2px 5px 0 rgba(0,0,0,0.50);
+    padding: 10px 0;
 }
 
-.button-group i {
-    font-size: 25px;
-    display: inherit;
-    color: #5E585C;
+.movie-detail {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical; 
+    
 }
 
-.icon-arrow-left {
-    margin-right: 35px;
-}
-
-.icon-arrow-right {
-    margin-left: 35px;
-}
