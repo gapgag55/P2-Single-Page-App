@@ -5,14 +5,6 @@ function Router(app) {
 
 Router.prototype.load = function () {
   let name = window.location.pathname
-  this.activeMenu(name)
-
-  if (name == '/') {
-    return this.request('/home', { 
-      name: '/'
-    })
-  }
-
   this.request(name, {name})
 }
 
@@ -21,38 +13,40 @@ Router.prototype.render = function (response) {
   
   this.app.html(response)
 
-  $('a').on('click', function (e) {
+  $('a').off('click').on('click', function (e) {
     e.preventDefault()
 
     let url  = $(this).attr('href')
     name = url
 
     if (name == '/home') name = '/'
-
     self.request(url, {name})
-    return false
+
   })
 }
 
 Router.prototype.request = function (url, options) {
   this.loading()
-  this.activeMenu(url)
 
-  setTimeout(function () {
-    $.ajax({
-      url: '/P2' + url
-    }) 
-    .done(function (response) {
+  if (url == '/') {
+    url = '/home'
+    options.name = '/'
+  }
+  
+  this.activeMenu(url);
 
-      history.pushState(
-        {data: response},
-        options.name, 
-        options.name.replace(/\s/g, '-').toLowerCase()
-      )
-
-      this.render(response)
-    }.bind(this))
-  }.bind(this), 500)
+  $.ajax({
+    url: '/P2' + url
+  }) 
+  .done(function (response) {
+    history.pushState(
+      {data: response},
+      options.name, 
+      options.name.replace(/\s/g, '-').toLowerCase()
+    )
+    
+    this.render(response)
+  }.bind(this))
 }
 
 Router.prototype.popState = function () {
@@ -63,7 +57,7 @@ Router.prototype.popState = function () {
 }
 
 Router.prototype.loading = function () {
-  this.render(
+  this.app.html(
     `<svg id="triangle" width="100px" height="100px" viewBox="-3 -4 39 39">
       <polygon 
         fill="#181818" 
@@ -76,6 +70,7 @@ Router.prototype.loading = function () {
 }
 
 Router.prototype.activeMenu = function(url) {
+
   let a = $(`header li a[href="${url}"]`)
   $(a.parent())
     .addClass('is-active')
