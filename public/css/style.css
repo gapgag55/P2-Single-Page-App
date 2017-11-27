@@ -178,10 +178,69 @@ header li.is-active a:after {
     width: 19%;
 }
 
-.movie .movie-img {
+.movie-img {
     height: 15vw;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+
+ .movie-img .action-group {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.40);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease;
+}
+
+.movie-img:hover .action-group {
+    opacity: 1;
+    visibility: visible;
+    transition: all .2s ease;
+}
+
+.movie-img i {
+    padding: 25px;
+    font-size: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.movie-img .icon-play {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.movie-img .icon-play:before {
+    z-index: 2;
+    position: relative;
+}
+
+.movie-img .icon-play:after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    padding: 30px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-55%, -50%);
+    z-index: 1;
+    transition: all .1s ease;
+}
+
+.movie-img .icon-play:hover:after {
+    padding: 32px;
+    transition: all .1s ease;
 }
 
 .movie-detail {
