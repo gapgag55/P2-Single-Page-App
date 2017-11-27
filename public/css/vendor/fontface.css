@@ -103,3 +103,15 @@
 .icon-twitter:before {
   content: "\67";
 }
+.icon-add:before {
+  content: "\68";
+}
+.icon-close:before {
+  content: "\69";
+}
+.icon-play:before {
+  content: "\6a";
+}
+.icon-share:before {
+  content: "\6b";
+}
