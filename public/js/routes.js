@@ -35,18 +35,20 @@ Router.prototype.request = function (url, options) {
   
   this.activeMenu(url);
 
-  $.ajax({
-    url: '/P2' + url
-  }) 
-  .done(function (response) {
-    history.pushState(
-      {data: response},
-      options.name, 
-      options.name.replace(/\s/g, '-').toLowerCase()
-    )
-    
-    this.render(response)
-  }.bind(this))
+  setTimeout(function() {
+    $.ajax({
+      url: '/P2' + url
+    }) 
+    .done(function (response) {
+      history.pushState(
+        {data: response},
+        options.name, 
+        options.name.replace(/\s/g, '-').toLowerCase()
+      )
+      
+      this.render(response)
+    }.bind(this))
+  }.bind(this), 900)
 }
 
 Router.prototype.popState = function () {
