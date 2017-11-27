@@ -3,6 +3,7 @@
 $router->get('/home', 'HomeController@index');
 $router->get('/coming', 'ComingMovieController@index');
 $router->get('/top-rate', 'TopMovieController@index');
+$router->get('/favorites', 'FavoritesController@index');
 
 /*
  * GET /movie

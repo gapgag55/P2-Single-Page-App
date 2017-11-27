@@ -24,6 +24,7 @@ return array(
     'Abraham\\TwitterOAuth\\Util' => $vendorDir . '/abraham/twitteroauth/src/Util.php',
     'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => $vendorDir . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
     'App\\Controllers\\ComingMovieController' => $baseDir . '/app/controllers/ComingMovieController.php',
+    'App\\Controllers\\FavoritesController' => $baseDir . '/app/controllers/FavoritesController.php',
     'App\\Controllers\\HomeController' => $baseDir . '/app/controllers/HomeController.php',
     'App\\Controllers\\MovieController' => $baseDir . '/app/controllers/MovieController.php',
     'App\\Controllers\\NotFoundController' => $baseDir . '/app/controllers/NotFoundController.php',

@@ -51,6 +51,7 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'Abraham\\TwitterOAuth\\Util' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util.php',
         'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
         'App\\Controllers\\ComingMovieController' => __DIR__ . '/../..' . '/app/controllers/ComingMovieController.php',
+        'App\\Controllers\\FavoritesController' => __DIR__ . '/../..' . '/app/controllers/FavoritesController.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/controllers/MovieController.php',
         'App\\Controllers\\NotFoundController' => __DIR__ . '/../..' . '/app/controllers/NotFoundController.php',
