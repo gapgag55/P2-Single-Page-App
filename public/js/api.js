@@ -1,0 +1,3 @@
+function MovieApi() {
+    this.baseurl = ''
+}
