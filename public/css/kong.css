@@ -1,10 +1,8 @@
 .top-page {
     counter-reset: myCounter;
 }
-
-
 .top-page .movie-img::before{
-    
+    margin: 0;
     counter-increment: myCounter;
     content:  counter(myCounter) ;
     text-align: center;

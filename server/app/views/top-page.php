@@ -22,7 +22,7 @@
         </div>
         <div class="col">
             <div class="row">
-                <div class="col movie">
+                <div class="col detail">
                 <div class="movie-img" style="background-image:url(public/images/thor.jpg)">
                 <div class="action-group">
                         <i class="icon-add"></i>
