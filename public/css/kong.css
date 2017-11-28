@@ -66,6 +66,7 @@
     /* flex-direction: column; */
     flex-shrink: 0;
     width: 49%;
+    margin-bottom:10px; 
 }
 .movie-list-body {
     display: flex;
