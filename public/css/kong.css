@@ -3,19 +3,58 @@
 =========================*/
 .top-page {
     counter-reset: myCounter;
+    padding: 0;
 }
 
 .top-page .movie-img::before {
-    margin: 0;
     counter-increment: myCounter;
     content:  counter(myCounter) ;
     text-align: center;
     width: 20px;
     height: 20px;
+    margin: 0;
     background-color: green;
     position: absolute;
     top:0;
     left:0;
+}
+
+.top-page {
+    padding: 60px 0;
+}
+
+.top-page .movie {
+    width: 49%;
+    display: flex;
+    margin-bottom: 20px; 
+}
+
+.top-page .movie-title {
+    padding: 0;
+}
+
+.top-page .movie-list-body {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.top-page .movie-img {
+    height: 20vw;
+    flex: 1.5;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-right: 10px;
+}
+
+.top-page .movie-info {
+    flex: 2;
+}
+
+.top-page .movie-detail {
+    -webkit-line-clamp: 7;
 }
 
 
@@ -57,30 +96,4 @@
 
 .not-found i {
     margin-left: -20px;
-}
-
-.top-page .movie {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-    /* flex-direction: column; */
-    flex-shrink: 0;
-    width: 49%;
-    margin-bottom:10px; 
-}
-.top-page .movie-list-body {
-    display: flex;
-    justify-content: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.top-page .movie-img {
-    height: 15vw;
-    width: 200%;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-.top-page .movie-info{
-    margin-left:15px;
 }

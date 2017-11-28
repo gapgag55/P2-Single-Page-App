@@ -7,12 +7,13 @@
             <i id="right" class="icon-pagi-right" /> 
         </div>
     </div>
-    <div id="movie-slide" class="movie-list-body">
-        
-    </div>
+    <div id="movie-slide" class="movie-list-body"></div>
 </div>
 
 <script>
+    /*
+     * Include Render Functions
+     */
 
     function updateSlide() {
 
@@ -59,7 +60,6 @@
         let api = new MovieApi()
 
         api.getUpComing(function (data) {
-            console.log(data.results)
             let results = data.results.map(function (item) {
                 return `
                 <div class="movie">
@@ -68,7 +68,7 @@
                             https://image.tmdb.org/t/p/w500/${item.poster_path})"
                         >
                         <div class="action-group">
-                            <i class="icon-add"></i>
+                            <i class="favorite icon-add" key=${item.id}></i>
                             <a href="/movie/${item.id}" class="icon-play"></a>
                             <i class="icon-share"></i>
                         </div>
@@ -82,6 +82,7 @@
 
             output.html(results)
             updateSlide()
+            render()
         })
     }
 
