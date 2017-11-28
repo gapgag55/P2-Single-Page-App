@@ -1,7 +1,7 @@
 <input class="searching-box" type="text" placeholder="Search Movie" autofocus>
 <div class="movie-list">
     <div class="movie-list-title">
-        Trends
+        Up Coming
         <div class="pointer">
             <i id="left" class="icon-pagi-left" /> 
             <i id="right" class="icon-pagi-right" /> 
