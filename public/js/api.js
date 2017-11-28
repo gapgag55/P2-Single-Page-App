@@ -5,7 +5,7 @@ function MovieApi() {
 
 MovieApi.prototype.request = async function (api, data, callback) {
     $.ajax({
-        url: api,
+        url: this.baseurl + api,
         method: "GET",
         data: Object.assign({}, data, {api_key: this.key})
     })
@@ -18,10 +18,12 @@ MovieApi.prototype.request = async function (api, data, callback) {
 }
 
 MovieApi.prototype.getUpComing = function (callback) {
-    let api  = this.baseurl + 'upcoming'
     let data = {language: 'en-US', page: 1}
+    this.request('upcoming', data, callback)
+}
 
-    this.request(api, data, callback)
+MovieApi.prototype.getTopRate = function (callback) {
+    this.request('top_rated', null, callback)
 }
 
 // MovieApi.prototype.getById = function (id) {
