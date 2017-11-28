@@ -68,19 +68,19 @@
     width: 49%;
     margin-bottom:10px; 
 }
-.movie-list-body {
+.top-page .movie-list-body {
     display: flex;
     justify-content: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.movie-img {
+.top-page .movie-img {
     height: 15vw;
     width: 200%;
     background-size: cover;
     background-position: center;
     position: relative;
 }
-.movie-info{
+.top-page .movie-info{
     margin-left:15px;
 }
