@@ -10,8 +10,7 @@ h3 {
   margin: 0;
 }
 
-a:hover,
-a:visited {
+a:hover {
     text-decoration: none;
     color: #FFF;
 }
