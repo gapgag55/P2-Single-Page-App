@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col movie"><div class="movie-title">Thor Ragnarok</div>
+            <div class="col movie"><div class="movie-title"><a href="#">Thor Ragnarok</a></div>
             <div class="movie-detail">Imprisoned, the almighty Thor finds himself in a lethal gladiatorial contest against the Hulk, his former ally. Thor must fight for survival and race against time to prevent the all-powerful Hela from destroying his home and the Asgardian civilization.</div>
             <div class="movie-detail">7 / 10 STARS</div></div>
         </div>
@@ -34,7 +34,7 @@
                     </div>
             </div>
             </div>
-            <div class="col movie"><div class="movie-title">Thor Ragnarok</div>
+            <div class="col movie"><div class="movie-title"><a href="#">Thor Ragnarok</a></div>
             <div class="movie-detail">Imprisoned, the almighty Thor finds himself in a lethal gladiatorial contest against the Hulk, his former ally. Thor must fight for survival and race against time to prevent the all-powerful Hela from destroying his home and the Asgardian civilization.</div>
             <div class="movie-detail">7 / 10 STARS</div></div>
         </div></div>
