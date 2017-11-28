@@ -58,3 +58,28 @@
 .not-found i {
     margin-left: -20px;
 }
+
+.top-page .movie {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    /* flex-direction: column; */
+    flex-shrink: 0;
+    width: 49%;
+}
+.movie-list-body {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.movie-img {
+    height: 15vw;
+    width: 200%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.movie-info{
+    margin-left:15px;
+}
