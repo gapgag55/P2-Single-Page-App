@@ -1,0 +1,18 @@
+.top-page {
+    counter-reset: myCounter;
+}
+
+
+.top-page .movie-img::before{
+    
+    counter-increment: myCounter;
+    content:  counter(myCounter) ;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+    top:0;
+    left:0;
+    
+}
