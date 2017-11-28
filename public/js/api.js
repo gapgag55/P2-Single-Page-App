@@ -26,8 +26,9 @@ MovieApi.prototype.getTopRate = function (callback) {
     this.request('top_rated', null, callback)
 }
 
-// MovieApi.prototype.getById = function (id) {
-// }
+MovieApi.prototype.getById = function (id, callback) {
+    this.request(id, null, callback)
+}
 
 // MovieApi.prototype.getByMonth = function () {
 // }
