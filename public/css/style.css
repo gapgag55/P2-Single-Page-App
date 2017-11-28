@@ -6,7 +6,7 @@ ul {
   list-style: none;
 }
 
-h3 {
+h3, p {
   margin: 0;
 }
 
@@ -279,6 +279,71 @@ header li.is-active a:after {
     letter-spacing: 1px;
 }
 
-.w-100{
-    padding: 0.1cm;
+/*========================
+|*****  Movie Page *******|
+=========================*/
+.movie-single {
+    padding: 40px 0;
+}
+
+.movie-single .bg {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+}
+
+.movie-single iframe {
+    width: 100%;
+}
+
+.movie-single .group {
+    margin-top: 40px;
+}
+
+
+.movie-single b,
+.movie-single p {
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    line-height: 22px;
+    padding: 10px 0;
+    display: block;
+}
+
+.movie-single b {
+    font-family: 'HelveticaNeueBold';
+    color: #FFFFFF;
+}
+
+.movie-single b:first-child {
+    padding-top: 0;
+}
+
+.movie-single p,
+.movie-single b span {
+    font-family: 'HelveticaNeueRegular';
+    color: #B3B3B3;
+}
+
+.movie-single .border-bottom {
+    border-bottom: 1px solid #282828;
+    padding: 10px 0;
+}
+
+.movie-single .twitter .bg {
+    width: 100%;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.movie-single .twitter .col-3 {
+    padding-right: 0;
+}
+
+.movie-single .twitter > b {
+    padding: 20px 0;
+}
+
+.movie-single .twitter li {
+    margin-bottom: 20px;
 }

@@ -40,6 +40,7 @@ Router.prototype.request = function (url, options) {
       url: '/P2' + url
     }) 
     .done(function (response) {
+      
       history.pushState(
         {data: response},
         options.name, 
