@@ -176,10 +176,12 @@ header li.is-active a:after {
 
 .movie {
     width: 19%;
+    margin-right: 3vh;
 }
 
 .movie-img {
     height: 15vw;
+    width: 15vw;
     background-size: cover;
     background-position: center;
     position: relative;

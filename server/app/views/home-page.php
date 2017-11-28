@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="movie-list-body">
-        <?php for($i=0;$i<5;$i++): ?>
+        <?php for($i=0;$i<10;$i++): ?>
             <div class="movie">
                 <div class="movie-img" style="background-image:url(public/images/thor.jpg)">
                     <div class="action-group">
