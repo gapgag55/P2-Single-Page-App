@@ -24,3 +24,25 @@
         <?php endfor; ?>
     </div>
 </div>
+
+<script>
+let counter = 0
+console.log(document.getElementById("left"))
+$("#left").on('click', moveSlide.bind(this, 'decrease'))
+$("#right").on('click', moveSlide.bind(this, 'increase'))
+
+function moveSlide(trigger) {
+   switch(trigger) {
+       case 'decrease': counter -= 1; break
+       case 'increase': counter += 1; break
+   }
+
+    let element = $('.movie-list-body')
+    let width = element.width() + 10
+
+    element.css({
+        "-webkit-transform":`translate(${counter*-width}px)`
+    })
+}
+
+</script>

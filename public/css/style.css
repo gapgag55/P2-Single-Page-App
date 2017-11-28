@@ -145,6 +145,10 @@ header li.is-active a:after {
     color: #2A2A2A;
   }
 
+.movie-list{
+    overflow: hidden;
+}
+
 .movie-list-title {
     font-family: 'HelveticaNeueBold';
     font-size: 25px;
@@ -170,7 +174,6 @@ header li.is-active a:after {
 .movie-list-body {
     display: flex;
     justify-content: center;
-    overflow: hidden;
     justify-content: space-between;
 } 
 
