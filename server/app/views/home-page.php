@@ -7,62 +7,85 @@
             <i id="right" class="icon-pagi-right" /> 
         </div>
     </div>
-    <div class="movie-list-body">
-        <?php for($i=0;$i<12;$i++): ?>
-            <div class="movie">
-                <div class="movie-img" style="background-image:url(public/images/thor.jpg)">
-                    <div class="action-group">
-                        <i class="icon-add"></i>
-                        <a href="#" class="icon-play"></a>
-                        <i class="icon-share"></i>
-                    </div>
-                </div>
-                <div class="movie-title"><a href="#">Thor Ragnarok</a></div>
-                <div class="movie-detail">Imprisoned, the almighty Thor finds himself in a lethal gladiatorial contest against the Hulk, his former ally. Thor must fight for survival and race against time to prevent the all-powerful Hela from destroying his home and the Asgardian civilization.</div>
-                <div class="movie-detail">7 / 10 STARS</div>
-            </div>
-        <?php endfor; ?>
+    <div id="movie-slide" class="movie-list-body">
+        
     </div>
 </div>
 
 <script>
-let counter = 0
-let element = $('.movie-list-body')
-let width = element.width() + 10
-let items = element.children('.movie').length 
-let maxClick = parseInt(items / 5)
 
-
-$("#left").on('click', moveSlide.bind(this, 'decrease'))
-$("#right").on('click', moveSlide.bind(this, 'increase'))
-
-function moveSlide(trigger) {
+    function updateSlide() {
         
-        switch (trigger) {
-            case 'decrease': counter -= 1; break
-            case 'increase': counter += 1; break
-        }
-        console.log(items / 5)
-        if (counter < 0 ) {
-            counter = 0
-            return false
-        }
-        if (counter > maxClick) {
-            counter = maxClick
-            return false
-        }
-        if (counter == maxClick) {
-            counter = items/5-1
-        }
+        let counter = 0
+        let element = $('.movie-list-body')
+        let width = element.width() + 10
+        let items = element.children('.movie').length 
+        let maxClick = parseInt(items / 5)
 
-        element.css({
-            "-webkit-transform":`translate(${counter*-width}px)`
+        $("#left").on('click', moveSlide.bind(this, 'decrease'))
+        $("#right").on('click', moveSlide.bind(this, 'increase'))
+
+        function moveSlide(trigger) {
+                
+            switch (trigger) {
+                case 'decrease': counter -= 1; break
+                case 'increase': counter += 1; break
+            }
+    
+            if (counter < 0 ) {
+                counter = 0
+                return false
+            }
+            if (counter > maxClick) {
+                counter = maxClick
+                return false
+            }
+            if (counter == maxClick) {
+                counter = items/5-1
+            }
+
+            element.css({
+                "-webkit-transform":`translate(${counter*-width}px)`
+            })
+
+            if (counter == items/5-1) {
+                counter = maxClick
+            }
+        }
+    }
+
+    function movieApi() {
+        let output = $('#movie-slide')
+        let api = new MovieApi()
+
+        api.getUpComing(function (data) {
+            console.log(data.results)
+            let results = data.results.map(function (item) {
+                return `
+                <div class="movie">
+                    <div class="movie-img" 
+                        style="background-image:url(
+                            https://image.tmdb.org/t/p/w500/${item.poster_path})"
+                        >
+                        <div class="action-group">
+                            <i class="icon-add"></i>
+                            <a href="#" class="icon-play"></a>
+                            <i class="icon-share"></i>
+                        </div>
+                    </div>
+                    <div class="movie-title"><a href="/movie/${item.id}">${item.original_title}</a></div>
+                    <div class="movie-detail">${item.overview}</div>
+                    <div class="movie-detail">${item.vote_average} / 10 STARS</div>
+                </div>
+                `
+            })
+
+            output.html(results)
+            updateSlide()
         })
+    }
 
-        if (counter == items/5-1) {
-            counter = maxClick
-        }
-   
-}
+    movieApi()
+    updateSlide()
 
 </script>
