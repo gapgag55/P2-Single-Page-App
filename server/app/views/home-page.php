@@ -15,7 +15,7 @@
 <script>
 
     function updateSlide() {
-        
+
         let counter = 0
         let element = $('.movie-list-body')
         let width = element.width() + 10
@@ -69,7 +69,7 @@
                         >
                         <div class="action-group">
                             <i class="icon-add"></i>
-                            <a href="#" class="icon-play"></a>
+                            <a href="/movie/${item.id}" class="icon-play"></a>
                             <i class="icon-share"></i>
                         </div>
                     </div>
