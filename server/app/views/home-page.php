@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="movie-list-body">
-        <?php for($i=0;$i<10;$i++): ?>
+        <?php for($i=0;$i<12;$i++): ?>
             <div class="movie">
                 <div class="movie-img" style="background-image:url(public/images/thor.jpg)">
                     <div class="action-group">
@@ -27,22 +27,42 @@
 
 <script>
 let counter = 0
-console.log(document.getElementById("left"))
+let element = $('.movie-list-body')
+let width = element.width() + 10
+let items = element.children('.movie').length 
+let maxClick = parseInt(items / 5)
+
+
 $("#left").on('click', moveSlide.bind(this, 'decrease'))
 $("#right").on('click', moveSlide.bind(this, 'increase'))
 
 function moveSlide(trigger) {
-   switch(trigger) {
-       case 'decrease': counter -= 1; break
-       case 'increase': counter += 1; break
-   }
+        
+        switch (trigger) {
+            case 'decrease': counter -= 1; break
+            case 'increase': counter += 1; break
+        }
+        console.log(items / 5)
+        if (counter < 0 ) {
+            counter = 0
+            return false
+        }
+        if (counter > maxClick) {
+            counter = maxClick
+            return false
+        }
+        if (counter == maxClick) {
+            counter = items/5-1
+        }
 
-    let element = $('.movie-list-body')
-    let width = element.width() + 10
+        element.css({
+            "-webkit-transform":`translate(${counter*-width}px)`
+        })
 
-    element.css({
-        "-webkit-transform":`translate(${counter*-width}px)`
-    })
+        if (counter == items/5-1) {
+            counter = maxClick
+        }
+   
 }
 
 </script>
