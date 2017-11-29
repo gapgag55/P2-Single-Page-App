@@ -1,4 +1,5 @@
     <div id="movie-single" class="movie-single">
+        <i class="icon-line"></i>
     <div class="movie-list-title">
         The snowman
         <div class="pointer">

@@ -18,8 +18,7 @@ MovieApi.prototype.request = async function (api, data, callback) {
 }
 
 MovieApi.prototype.getUpComing = function (callback) {
-    let data = {language: 'en-US', page: 1}
-    this.request('movie/upcoming', data, callback)
+    this.request('movie/upcoming', null, callback)
 }
 
 MovieApi.prototype.getTopRate = function (callback) {

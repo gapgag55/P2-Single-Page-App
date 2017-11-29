@@ -97,3 +97,12 @@
 .not-found i {
     margin-left: -20px;
 }
+
+.favorite-page .movie-fav{
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.favorite-page .movie{
+    margin : 0px;
+}

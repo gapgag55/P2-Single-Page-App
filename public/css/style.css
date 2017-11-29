@@ -3,6 +3,7 @@
 =========================*/
 ul {
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -149,9 +150,9 @@ header li.is-active a:after {
     color: #2A2A2A;
   }
 
-.movie-list{
-    overflow: hidden;
-}
+/*========================
+|******  Movie Box *******|
+=========================*/
 
 .movie-list-title {
     font-family: 'HelveticaNeueBold';
@@ -201,6 +202,7 @@ header li.is-active a:after {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 998;
     background: rgba(0,0,0,0.40);
     display: flex;
     justify-content: space-between;
@@ -281,6 +283,76 @@ header li.is-active a:after {
     -webkit-box-orient: vertical; 
     font-size: 15px;
     letter-spacing: 1px;
+}
+
+.movie .icon-share {
+    position: relative;
+}
+
+.movie .icon-share .share {
+    position: absolute;
+    left: 0;
+    bottom: -45px;
+    background-color: #252525;
+    z-index: 999;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.movie .icon-share.is-active .share {
+    opacity: 1;
+    visibility: visible;
+}
+
+.movie .icon-share .share::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 9px solid #252525;
+    position: absolute;
+    top: -9px;
+    left: 32px;
+}
+
+.movie .icon-share i,
+.movie .icon-share a {
+    font-size: 12px;
+    font-style: initial;
+}
+
+.movie .icon-share i {
+    padding: 0;
+    padding-right: 10px;
+}
+
+.movie .icon-share a {
+    display: flex;
+    color: #FFF;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.movie .icon-share p {
+    width: 100%;
+    padding-bottom: 3px;
+    padding-right: 45px;
+    border-bottom: 1px solid #373737;
+    letter-spacing: 1.2px;
+}
+
+.movie .icon-share li:first-child a {
+    padding-top: 7px;
+}
+
+.movie .icon-share li:last-child a {
+    padding-bottom: 3px;
+}
+
+.movie .icon-share li:last-child p {
+    border-bottom: 0;
 }
 
 /*========================
