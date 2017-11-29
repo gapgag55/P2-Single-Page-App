@@ -30,10 +30,37 @@
                     </div>  
                 </div>
             `
-            
-            output.append(result)    
-            render()     
+        output.append(result)    
+        render()     
+        getRemove()
+    })
+}
+    function getRemove(){
+
+    let movies = $('.movie-fav .movie')
+
+    $.each(movies, function (index, item) {
+        // console.log(item)
+        let icon = $(item).find(".favorite")
+        icon.on('click', function () {
+            let parent = $(this).parent().parent().parent()
+
+            if ($(this).hasClass('icon-close')) {
+                parent.css({
+                    "-webkit-filter": "grayscale(100%)",
+                    "filter": "grayscale(100%)"
+                })
+            } else {
+                parent.css({
+                    "-webkit-filter": "initial",
+                    "filter": "initial"
+                })
+            }
         })
-    }
-         
+    })
+
+   
+        //  $( "p" ).parent().css("-webkit-filter: grayscale(100%);filter: grayscale(100%);"); break 
+   }
+   
     </script>
