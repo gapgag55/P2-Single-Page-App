@@ -106,3 +106,6 @@
 .favorite-page .movie{
     margin : 0px;
 }
+.favorite-page .movie-img{
+    height: 22vw;
+}
