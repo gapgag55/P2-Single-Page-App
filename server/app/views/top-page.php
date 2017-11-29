@@ -32,12 +32,3 @@
         output.html(results)
     })
 </script>
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> de3f7204ca367967c9930b34b1b0630997ba621a
