@@ -83,6 +83,10 @@ header {
     padding: 20px 0;
 }
 
+header .logo {
+    max-width: 40px;
+}
+
 header nav,
 header ul {
     width: 100%;
@@ -241,7 +245,7 @@ header li.is-active a:after {
     border-radius: 50%;
     padding: 30px;
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-55%, -50%);
     z-index: 1;

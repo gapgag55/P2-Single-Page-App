@@ -1,4 +1,4 @@
-<div id="movie-single" class="movie-single">
+    <div id="movie-single" class="movie-single">
     <div class="movie-list-title">
         The snowman
         <div class="pointer">
@@ -20,10 +20,17 @@
             </div>
         </div>
         <div class="col-9">
-            <div class="youtube">
-                <iframe width="560" height="400" src="https://www.youtube.com/embed/r0YyR0_SG5k" frameborder="0" allowfullscreen></iframe>
-                <div class="border-bottom"></div>
+            <div class="youtube row">
+                <div class="col-9">
+                    <iframe width="560" height="400" src="https://www.youtube.com/embed/r0YyR0_SG5k" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-3">
+                    <ul>
+                        <li>Play list</li>
+                    </ul>
+                </div>
             </div>
+            <div class="border-bottom"></div>  
             <div class="border-bottom">
                 <b>Rating: 8.5/10 </b>
                 <p>"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
