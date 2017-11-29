@@ -25,14 +25,15 @@ function Favorites() {
 
             let id =  $(this).attr('key')
             let item = localStorage.getItem('favorites')
-            
+            item = JSON.parse(item)
+
             if (item) {
                 if (item.indexOf(id) < 0) {
                     /*
                      * Add Movie to browser
                      */
-                    item += `\"${id}\"`
-                    localStorage.setItem('favorites', item);
+                    item.push(id)
+                    localStorage.setItem('favorites', JSON.stringify(item));
                     
                     $(this).addClass('icon-close')
                     $(this).removeClass('icon-add')
@@ -40,16 +41,16 @@ function Favorites() {
                     /*
                      * Remove Movie in browser
                      */
-                    console.log(id)
+                    let index = item.indexOf(id)
+                    item.splice(index, 1)
 
-                    item = item.replace(`\"${id}\"`, '')
-                    localStorage.setItem('favorites', item);
+                    localStorage.setItem('favorites', JSON.stringify(item));
 
                     $(this).addClass('icon-add')
                     $(this).removeClass('icon-close')
                 }
             } else {
-                localStorage.setItem('favorites', `\"${id}\"`);
+                localStorage.setItem('favorites', JSON.stringify([id]));
 
                 $(this).addClass('icon-close')
                 $(this).removeClass('icon-add')

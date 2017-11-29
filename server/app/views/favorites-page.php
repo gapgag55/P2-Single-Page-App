@@ -1,25 +1,21 @@
 <div class="container favorite-page">
 <div class="movie-list-title">
-    Favorites
-    
+    Favorites 
 </div>
 <div id="favorite" class="movie-fav"></div>
-    <script>
-    var apifav = new MovieApi ();
-    var numsfav = localStorage.getItem('favorites');
+</div>
+
+<script>
+    var api = new MovieApi();
     var output = $('#favorite')
-    var res = numsfav.split(/\"/g);
-    var i;
 
-    res = res.filter(function(item) {
-        return item != ""
-    })
+    var ids = localStorage.getItem('favorites');
+    var res = JSON.parse(ids)
 
-    for(i=0;i<res.length;i++){
+    for(var i=0 ; i < res.length; i++){
         let id = res[i]
-        apifav.getById(id,function (item) {
+        api.getById(id,function (item) {
             var result = `
-            
                 <div class="movie">
                     <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.poster_path})">
                         <div class="action-group">
@@ -30,37 +26,34 @@
                     </div>  
                 </div>
             `
-        output.append(result)    
-        render()     
-        getRemove()
-    })
-}
+            output.append(result)    
+            render()     
+            getRemove()
+        })
+    }
     function getRemove(){
 
-    let movies = $('.movie-fav .movie')
+        let movies = $('.movie-fav .movie')
 
-    $.each(movies, function (index, item) {
-        // console.log(item)
-        let icon = $(item).find(".favorite")
-        icon.on('click', function () {
-            let parent = $(this).parent().parent().parent()
+        $.each(movies, function (index, item) {
+            // console.log(item)
+            let icon = $(item).find(".favorite")
+            icon.on('click', function () {
+                let parent = $(this).parent().parent().parent()
 
-            if ($(this).hasClass('icon-close')) {
-                parent.css({
-                    "-webkit-filter": "grayscale(100%)",
-                    "filter": "grayscale(100%)"
-                })
-            } else {
-                parent.css({
-                    "-webkit-filter": "initial",
-                    "filter": "initial"
-                })
-            }
+                if ($(this).hasClass('icon-close')) {
+                    parent.css({
+                        "-webkit-filter": "grayscale(100%)",
+                        "filter": "grayscale(100%)"
+                    })
+                } else {
+                    parent.css({
+                        "-webkit-filter": "initial",
+                        "filter": "initial"
+                    })
+                }
+            })
         })
-    })
-
-   
-        //  $( "p" ).parent().css("-webkit-filter: grayscale(100%);filter: grayscale(100%);"); break 
    }
    
     </script>
