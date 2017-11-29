@@ -1,7 +1,6 @@
-    <div id="movie-single" class="movie-single">
-        <i class="icon-line"></i>
+<div id="movie-single" class="movie-single container">
     <div class="movie-list-title">
-        The snowman
+        <h1 id="title"><?= $keyword; ?></h1>
         <div class="pointer">
             <i id="left" class="icon-add" /> 
             <i id="right" class="icon-share" /> 
@@ -10,69 +9,142 @@
 
     <div class="row">
         <div class="col-3">
-            <div class="bg" style="background-image: url(https://image.tmdb.org/t/p/w500/tDgxknTVwrScxpCYyGUjXSn5NRk.jpg);"></div>
+            <div id="poster" class="bg"></div>
             <div class="group">
-                <b>Director</b>
-                <p>Lee Unkrich, Adrian Molina (co-director)</p>
-                <b>Writer</b>
-                <p>Lee Unkrich (original story by), Jason Katz (original story by)</p>
-                <b>Stars</b>
-                <p>Anthony Gonzalez, Gael García Bernal, Benjamin Bratt</p>
+                <b>Budget</b>
+                <p id="budget"></p>
+                <b>Tagline</b>
+                <p id="tagline"></p>
+                <b>Release Date</b>
+                <p id="release"></p>
+                <b>Cast</b>
+                <p id="cast"></p>
+                <b>Crew</b>
+                <p id="crew"></p>
             </div>
         </div>
         <div class="col-9">
             <div class="youtube row">
-                <div class="col-9">
-                    <iframe width="560" height="400" src="https://www.youtube.com/embed/r0YyR0_SG5k" frameborder="0" allowfullscreen></iframe>
+                <div class="col-8 left">
+                    <iframe width="560" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="col-3">
-                    <ul>
-                        <li>Play list</li>
+                <div class="col-4 right">
+                    <ul id="playlists">
                     </ul>
                 </div>
             </div>
             <div class="border-bottom"></div>  
             <div class="border-bottom">
-                <b>Rating: 8.5/10 </b>
-                <p>"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
+                <b id="rating"></b>
+                <p id="description">"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
             </div>
             <div class="spotify border-bottom">
-                <iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" height="380" frameborder="0" allowtransparency="true"></iframe>
+                <iframe src="https://open.spotify.com/embed?uri=<?= $spotify; ?>" height="380" frameborder="0" allowtransparency="true"></iframe>
             </div>
             <div class="twitter">
                 <b>Comment <span>67% talked Good From 1,200 comments</span></b>
                 <ul class="row">
-                    <?php for($i = 0; $i < 10; $i++): ?>
+                    <?php foreach($tweets as $tweet): ?>
                     <li class="row col-6">
                         <div class="col-3">
-                            <div class="bg" style="background-image: url(https://image.tmdb.org/t/p/w500/tDgxknTVwrScxpCYyGUjXSn5NRk.jpg)"></div>
+                            <div class="bg" style="background-image: url(<?= $tweet->user->profile_image_url; ?>)"></div>
                         </div>
                         <div class="col-9">
-                            <b>Buri</b>
-                            <p>Burdened with glorious purpose #loki #thorragnarok </p>
+                            <b><?= $tweet->user->name; ?></b>
+                            <p><?= $tweet->text; ?></p>
                         </div>
                     </li>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
     </div>
-
 </div>
 
 
 <script>
-    // let output = $('#movie-single')
-    let api = new MovieApi() 
+    let title = $('#title')
+    let poster = $('#poster')
+    let rating = $('#rating')
+    let budgets = $('#budget')
+    let taglines = $('#tagline')
+    let release = $('#release')
+    let description = $('#description')
+    let crews = $('#crew')
+    let casts = $('#cast')
+    let playlists = $('#playlists')
+    let youtube = $('.youtube iframe')
+
+    var api = new MovieApi() 
+
     api.getById(<?= $id; ?>, function (data) {
-        console.log(data)
-        // let result = `
-        //     ${data.original_title}
-        //     <div class="pointer">
-        //         <i id="left" class="icon-add" /> 
-        //         <i id="right" class="icon-share" /> 
-        //     </div>
-        // `
-        // output.html(result)
+        let {
+            overview,
+            poster_path,
+            budget,
+            tagline,
+            vote_average,
+            release_date
+        } = data 
+
+        description.html(overview)
+        poster.css({
+            'background-image': `url(https://image.tmdb.org/t/p/w500/${poster_path})`
+        })
+        budgets.html(budget)
+        taglines.html(tagline)
+        rating.html(`Rating: ${vote_average} / 10`)
+        release.html(release_date)
+        
     })
+    api.getCredits(<?= $id; ?>, function(data) {
+        let {cast, crew} = data
+
+        cast = cast.map(function (item) {
+            return item.name
+        })
+
+        crew = crew.map(function (item) {
+            return item.name
+        })
+
+        casts.html(cast.toString())
+        crews.html(crew.toString())
+    })
+    api.getYoutube(title.html(), function (data) {
+        let active = '' 
+        
+        $.each(data.items, function (index, item) {
+            active = ''
+
+            if (index == 0) {
+                active = 'is-active'
+                youtube.attr('src', `https://www.youtube.com/embed/${item.id.videoId}`)
+            }
+
+            playlists.append( `
+                <li class="${active}" key="${item.id.videoId}">
+                    <div class="bg" style="background-image:url(${item.snippet.thumbnails.default.url});"></div>
+                    <div class="detail">
+                        <b>${item.snippet.title}</b>
+                        <p>${item.snippet.channelTitle}</p>
+                    </div>
+                </li>
+            `)
+        })
+
+        playlist()
+    })
+
+    function playlist() {
+        playlists.find('li').on('click', function () {
+            $(this)
+                .addClass('is-active')
+                .siblings()
+                .removeClass('is-active')
+
+            youtube.attr('src', `https://www.youtube.com/embed/${$(this).attr('key')}`)
+        })
+    }
+    
 </script>

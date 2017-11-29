@@ -10,3 +10,8 @@ $router->get('/favorites', 'FavoritesController@index');
  * Params: id
  */
 $router->get('/movie', 'MovieController@index');
+
+/*
+ * GET comment Twitter
+ */
+$router->get('/twitter', 'MovieController@getCommentTwitter');

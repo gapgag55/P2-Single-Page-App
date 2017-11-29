@@ -133,6 +133,10 @@ header li.is-active a:after {
 /*========================
 |******  HOME PAGE *******|
 =========================*/
+.home-page,
+.coming-page {
+    overflow: hidden;
+}
 
 .searching-box {
     width: 100%;
@@ -422,4 +426,59 @@ header li.is-active a:after {
 
 .movie-single .twitter li {
     margin-bottom: 20px;
+}
+
+.movie-single .youtube {
+    background: #000;
+}
+
+.movie-single .youtube .left {
+    padding-right: 0;
+}
+
+.movie-single .youtube .right {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #1E1E1E;
+    overflow-y: scroll;
+    height: 408px;
+}
+
+
+.movie-single .youtube li {
+    display: flex;
+    border-bottom: 1px solid #282828;
+    padding: 10px 0;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.movie-single .youtube li.is-active {
+    background-color: #141313;
+}
+
+.movie-single .youtube .bg {
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.movie-single .youtube b {
+    font-family: 'HelveticaNeueRegular';
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+}
+
+.movie-single .youtube b,
+.movie-single .youtube p {
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.movie-single .youtube p {
+    padding: 0;
 }

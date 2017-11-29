@@ -17,10 +17,10 @@ class TwitterModel {
         );
     }
 
-    public function searchHasgTag() {
+    public function searchTweet($keyword) {
         return $this->twitter->get("search/tweets", [
-            "q" => 'english',
-            "count" => 4,
+            "q" => $keyword,
+            "count" => 8
         ]);
     }
 }

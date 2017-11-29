@@ -40,6 +40,7 @@ function Favorites() {
                     /*
                      * Remove Movie in browser
                      */
+                    console.log(id)
 
                     item = item.replace(`\"${id}\"`, '')
                     localStorage.setItem('favorites', item);

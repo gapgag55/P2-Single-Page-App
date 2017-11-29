@@ -21,14 +21,17 @@ class SpotifyModel {
         $this->api->setAccessToken($accessToken);
     }
 
-    public function search() {
-        $results = $this->api->search('perfect', 'track');
+    public function playlist($keyword) {
+        $results = $this->api->search($keyword, 'track');
+        // var_dump($results);
+        return $results->tracks->items[0]->artists[0]->uri;
+        // https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf
         
-        echo '<pre>' . var_export($results, true) . '</pre>';
+        // echo '<pre style="color: #FFF;">' . var_export($results->tracks->items[0]->artists[0]->uri, true) . '</pre>';
     
-        foreach ($results->artists->items as $artist) {
-            echo $artist->name, '<br>';
-        }
+        // foreach ($results->artists->items as $artist) {
+        //     echo $artist->name, '<br>';
+        // }
 
 
        // echo '<iframe src="https://open.spotify.com/embed?uri=spotify:artist:6eUKZXaKkcviH0Ku9w2n3V" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>';
