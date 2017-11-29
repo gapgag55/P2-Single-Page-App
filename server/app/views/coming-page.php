@@ -1,6 +1,6 @@
 
 <?php for($j = 0;$j<12;$j++):?>
-    <div class="movie-list">
+    <div class="movie-list" counter="0">
         <div class="movie-list-title">
             Up Coming
             <div class="pointer">
@@ -8,8 +8,8 @@
                 <i id="right" class="icon-pagi-right" /> 
             </div>
         </div>
-        <div id="movie-slide" class="movie-list-body">
-            <?php for($i = 0;$i<10;$i++):?>
+        <div id="movie-slide"  class="movie-list-body">
+            <?php for($i = 0;$i<22;$i++):?>
                 <div class="movie">
                     <div class="movie-img" style="background-image:url(public/images/thor.jpg)">
                         <div class="action-group">
@@ -27,45 +27,48 @@
     </div>
 <?php endfor?>
 <script>
-        function updateSlide() {
+    function updateSlide() {
+        let elements = $('#app .movie-list')
+        $.each(elements, function(index, item) {
+            
+            let left = $(item).find("#left")
+            let right = $(item).find("#right")
+            left.on('click', moveSlide.bind(this, 'decrease'))
+            right.on('click', moveSlide.bind(this, 'increase'))
 
-        let counter = 0
-        let element = $('.movie-list-body')
-        let width = element.width() + 10
-        let items = element.children('.movie').length 
-        let maxClick = Math.floor(items / 5)-1
-        console.log(items)
-        $("#left").on('click', moveSlide.bind(this, 'decrease'))
-        $("#right").on('click', moveSlide.bind(this, 'increase'))
+            let counter = 0
+            let element = $(item).find("#movie-slide")
+            let width = element.width() + 10
+            let items = element.children('.movie').length 
+            let maxClick = Math.floor(items / 5)
+            console.log(maxClick)
+            function moveSlide(trigger) {
+                switch (trigger) {
+                    case 'decrease': counter -= 1; break
+                    case 'increase': counter += 1; break
+                }
+        
+                if (counter < 0 ) {
+                    counter = 0
+                    return false
+                }
+                if (counter > maxClick) {
+                    counter = maxClick
+                    return false
+                }
+                if (counter == maxClick) {
+                    counter = items/5-1
+                }
+                console.log(counter)
+                element.css({
+                    "-webkit-transform":`translate(${counter*-width}px)`
+                })
 
-        function moveSlide(trigger) {
-            console.log(counter)
-            switch (trigger) {
-                case 'decrease': counter -= 1; break
-                case 'increase': counter += 1; break
+                if (counter == items/5-1) {
+                    counter = maxClick
+                }
             }
-    
-            if (counter < 0 ) {
-                counter = 0
-                return false
-            }
-            if (counter > maxClick) {
-                counter = maxClick
-                return false
-            }
-            if (counter == maxClick) {
-                counter = items/5-1
-            }
-
-            element.css({
-                "-webkit-transform":`translate(${counter*-width}px)`
-            })
-
-            if (counter == items/5-1) {
-                counter = maxClick
-            }
-    
-        }
+        })
     }
     updateSlide()
 </script>

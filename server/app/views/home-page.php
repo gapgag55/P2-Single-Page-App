@@ -21,7 +21,7 @@
         let element = $('.movie-list-body')
         let width = element.width() + 10
         let items = element.children('.movie').length 
-        let maxClick = Math.floor(items / 5)-1
+        let maxClick = Math.floor(items / 5)
 
         $("#left").on('click', moveSlide.bind(this, 'decrease'))
         $("#right").on('click', moveSlide.bind(this, 'increase'))
