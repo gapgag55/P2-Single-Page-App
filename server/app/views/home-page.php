@@ -20,13 +20,13 @@
         let element = $('.movie-list-body')
         let width = element.width() + 10
         let items = element.children('.movie').length 
-        let maxClick = parseInt(items / 5)
+        let maxClick = Math.floor(items / 5)-1
 
         $("#left").on('click', moveSlide.bind(this, 'decrease'))
         $("#right").on('click', moveSlide.bind(this, 'increase'))
 
         function moveSlide(trigger) {
-                
+            console.log(counter)
             switch (trigger) {
                 case 'decrease': counter -= 1; break
                 case 'increase': counter += 1; break
@@ -86,6 +86,5 @@
     }
 
     movieApi()
-    updateSlide()
 
 </script>
