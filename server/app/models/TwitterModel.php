@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use SentimentAnalysis\Analyzer;
 
 class TwitterModel {
 
@@ -20,7 +21,16 @@ class TwitterModel {
     public function searchTweet($keyword) {
         return $this->twitter->get("search/tweets", [
             "q" => $keyword,
-            "count" => 8
+            "count" => 2
         ]);
     }
+
+    // public function analysis() {
+    //     // Analyze the text.
+    //     $result = (Analyzer::withDefaultConfig())
+    //         ->analyze('This PHP package is awesome');
+
+    //     // Get and print the category.
+    //     echo $result->category();
+    // }
 }

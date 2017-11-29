@@ -113,7 +113,7 @@
     })
     api.getYoutube(title.html(), function (data) {
         let active = '' 
-        
+
         $.each(data.items, function (index, item) {
             active = ''
 

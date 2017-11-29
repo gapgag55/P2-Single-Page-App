@@ -47,6 +47,7 @@ MovieApi.prototype.getYoutube = function(query, callback) {
         {
             part: 'snippet',
             q: query,
+            type: 'video',
             key: 'AIzaSyDzYWi9z8tE9VodwcNcYAQdUEtvpx3UwvQ',
             maxResults: 12
         },
