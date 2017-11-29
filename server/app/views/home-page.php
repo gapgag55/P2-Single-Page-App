@@ -1,4 +1,4 @@
-<input class="searching-box" type="text" placeholder="Search Movie" autofocus>
+<input class="searching-box" type="text" placeholder="Search Movie" autofocus onkeyup="searching()">
 <div class="movie-list">
     <div class="movie-list-title">
         Up Coming
@@ -14,7 +14,7 @@
     /*
      * Include Render Functions
      */
-
+    
     function updateSlide() {
 
         let counter = 0
@@ -52,10 +52,12 @@
             if (counter == items/5-1) {
                 counter = maxClick
             }
+    
         }
     }
 
     function movieApi() {
+        console.log("hahaapi")
         let output = $('#movie-slide')
         let api = new MovieApi()
 
@@ -85,7 +87,39 @@
             render()
         })
     }
+    
+    function searching() {
+        $("#movie-list-body").html("")
+        let search = $(".searching-box").val()
+        let api = new MovieApi()
+        let output = $('#movie-slide')
+        api.getbySearch(search,function (data) {
+            let results = data.results.map(function (item) {
+                return `
+                <div class="movie">
+                    <div class="movie-img" 
+                        style="background-image:url(
+                            https://image.tmdb.org/t/p/w500/${item.poster_path})"
+                        >
+                        <div class="action-group">
+                            <i class="favorite icon-add" key=${item.id}></i>
+                            <a href="/movie/${item.id}" class="icon-play"></a>
+                            <i class="icon-share"></i>
+                        </div>
+                    </div>
+                    <div class="movie-title"><a href="/movie/${item.id}">${item.original_title}</a></div>
+                    <div class="movie-detail">${item.overview}</div>
+                    <div class="movie-detail">${item.vote_average} / 10 STARS</div>
+                </div>
+                `
+            })
 
+            output.html(results)
+            updateSlide()
+            render()
+        })
+            console.log("yes")
+    }
     movieApi()
 
 </script>
