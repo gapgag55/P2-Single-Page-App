@@ -2,8 +2,25 @@
     <div class="movie-list-title">
         <h1 id="title"><?= $keyword; ?></h1>
         <div class="pointer">
-            <i id="left" class="icon-add" /> 
-            <i id="right" class="icon-share" /> 
+            <i class="favorite icon-add" key=${item.id}></i> 
+            <i class="icon-share">
+                <div class="share">
+                    <ul>
+                        <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                            <i class="icon-facebook"></i>
+                            <p>Facebook</p>
+                        </li>
+                        <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                            <i class="icon-twitter"></i>
+                            <p>Twitter</p>
+                        </li>
+                        <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                            <i class="icon-line"></i>
+                            <p>Line</p>
+                        </li>
+                    </ul>
+                </div>
+            </i> 
         </div>
     </div>
 
@@ -91,7 +108,7 @@
         poster.css({
             'background-image': `url(https://image.tmdb.org/t/p/w500/${poster_path})`
         })
-        budgets.html(budget)
+        budgets.html(budget.toLocaleString())
         taglines.html(tagline)
         rating.html(`Rating: ${vote_average} / 10`)
         release.html(release_date)
@@ -146,5 +163,7 @@
             youtube.attr('src', `https://www.youtube.com/embed/${$(this).attr('key')}`)
         })
     }
+
+    render()
     
 </script>

@@ -289,14 +289,14 @@ header li.is-active a:after {
     letter-spacing: 1px;
 }
 
-.movie .icon-share {
+.icon-share {
     position: relative;
 }
 
-.movie .icon-share .share {
+.icon-share .share {
     position: absolute;
-    left: 0;
-    bottom: -45px;
+    left: -3px;
+    bottom: -58px;
     background-color: #252525;
     z-index: 999;
     border-radius: 5px;
@@ -304,12 +304,12 @@ header li.is-active a:after {
     visibility: hidden;
 }
 
-.movie .icon-share.is-active .share {
+.icon-share.is-active .share {
     opacity: 1;
     visibility: visible;
 }
 
-.movie .icon-share .share::before {
+.icon-share .share::before {
     content: '';
     width: 0;
     height: 0;
@@ -321,42 +321,42 @@ header li.is-active a:after {
     left: 32px;
 }
 
-.movie .icon-share i,
-.movie .icon-share a {
+.icon-share i,
+.icon-share li {
     font-size: 12px;
     font-style: initial;
 }
 
-.movie .icon-share i {
+.icon-share i {
     padding: 0;
     padding-right: 10px;
 }
 
-.movie .icon-share a {
+.icon-share li {
     display: flex;
     color: #FFF;
     padding-left: 10px;
-    padding-top: 3px;
+    padding-top: 5px;
 }
 
-.movie .icon-share p {
+.icon-share p {
     width: 100%;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
     padding-right: 45px;
     border-bottom: 1px solid #373737;
     letter-spacing: 1.2px;
 }
 
-.movie .icon-share li:first-child a {
-    padding-top: 7px;
-}
-
-.movie .icon-share li:last-child a {
-    padding-bottom: 3px;
-}
-
-.movie .icon-share li:last-child p {
+.icon-share li:last-child p {
     border-bottom: 0;
+}
+
+.icon-share li:first-child {
+    padding-top: 10px;
+}
+
+.icon-share li:last-child {
+    padding-bottom: 5px;
 }
 
 /*========================
@@ -481,4 +481,18 @@ header li.is-active a:after {
 
 .movie-single .youtube p {
     padding: 0;
+}
+
+.movie-single .icon-share .share {
+    bottom: initial;
+    left: -115px;
+}
+
+.movie-single .icon-share .share::before {
+    left: auto;
+    right: 22px;
+}
+
+.movie-single .icon-share li {
+    padding-right: 50px;
 }

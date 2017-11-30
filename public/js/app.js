@@ -1,4 +1,4 @@
-function Favorites() {
+function favorites() {
     /*
      * Check Favorites
      */
@@ -59,6 +59,73 @@ function Favorites() {
     })
 }
 
+function shareIcon() {
+    let iconShare = $('.icon-share')
+   
+    iconShare.on('click', function (e) {
+        e.stopPropagation()
+        $(this).toggleClass('is-active')
+
+        /*
+         * Remove Class is-active
+         */
+        var divMovie = $(this)
+                        .parent()
+                        .parent()
+                        .parent()
+                        .siblings()
+
+        divMovie.find('.icon-share').removeClass('is-active')
+    })
+
+    $('body').on('click', function () {
+        $(iconShare).removeClass('is-active')
+    })
+}
+
+function updateSlide() {
+    
+    let counter = 0
+    let element = $('.movie-list-body')
+    let width = element.width() + 10
+    let items = element.children('.movie').length 
+    let maxClick = Math.floor(items / 5)-1
+
+    $("#left").on('click', moveSlide.bind(this, 'decrease'))
+    $("#right").on('click', moveSlide.bind(this, 'increase'))
+
+    function moveSlide(trigger) {
+
+        switch (trigger) {
+            case 'decrease': counter -= 1; break
+            case 'increase': counter += 1; break
+        }
+
+        if (counter < 0 ) {
+            counter = 0
+            return false
+        }
+        if (counter > maxClick) {
+            counter = maxClick
+            return false
+        }
+        if (counter == maxClick) {
+            counter = items/5-1
+        }
+
+        element.css({
+            "-webkit-transform":`translate(${counter*-width}px)`
+        })
+
+        if (counter == items/5-1) {
+            counter = maxClick
+        }
+
+    }
+}
+
 function render() {
-    Favorites()
+    favorites()
+    updateSlide()
+    shareIcon()
 }

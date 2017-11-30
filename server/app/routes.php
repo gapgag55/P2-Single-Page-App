@@ -1,9 +1,10 @@
 <?php 
 
-$router->get('/home', 'HomeController@index');
-$router->get('/coming', 'ComingMovieController@index');
-$router->get('/top-rate', 'TopMovieController@index');
-$router->get('/favorites', 'FavoritesController@index');
+$router->get('/home', 'PageControllers@home');
+$router->get('/now-playing', 'PageControllers@playing');
+$router->get('/top-rate', 'PageControllers@topMovie');
+$router->get('/lastest', 'PageControllers@lastest');
+$router->get('/favorites', 'PageControllers@favorites');
 
 /*
  * GET /movie

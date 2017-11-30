@@ -1,13 +1,13 @@
 function MovieApi() {
     this.baseurl = 'https://api.themoviedb.org/3/'
-    this.youtube = 'https://www.googleapis.com/youtube/v3/videos?id=7lCDEYXw3mM&key=YOUR_API_KEY'
     this.key = 'aea1c02a2029aa398e2ea649ca42615a'
 }
 
-MovieApi.prototype.request = function (api, data, callback) {
+MovieApi.prototype.request = async function (api, data, callback) {
     $.ajax({
         url: api,
         method: "GET",
+        async: false,
         data: Object.assign({}, data, {api_key: this.key})
     })
     .done(function(response) {
@@ -24,6 +24,14 @@ MovieApi.prototype.getUpComing = function (callback) {
 
 MovieApi.prototype.getTopRate = function (callback) {
     this.request(this.baseurl + 'movie/top_rated', null, callback)
+}
+
+MovieApi.prototype.getNowPlaying = function (callback) {
+    this.request(this.baseurl + 'movie/now_playing', null, callback)
+}
+
+MovieApi.prototype.getLastest = function (callback) {
+    this.request(this.baseurl + 'movie/latest', null, callback)
 }
 
 MovieApi.prototype.getById = function (id, callback) {

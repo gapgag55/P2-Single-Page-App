@@ -15,9 +15,26 @@
                 <div class="movie">
                     <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.poster_path})">
                         <div class="action-group">
-                            <i class="icon-add"></i>
+                            <i class="favorite icon-add" key=${item.id}></i>
                             <a href="/movie/${item.id}" class="icon-play"></a>
-                            <i class="icon-share"></i>
+                            <i class="icon-share">
+                                <div class="share">
+                                    <ul>
+                                        <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                            <i class="icon-facebook"></i>
+                                            <p>Facebook</p>
+                                        </li>
+                                        <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                            <i class="icon-twitter"></i>
+                                            <p>Twitter</p>
+                                        </li>
+                                        <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                            <i class="icon-line"></i>
+                                            <p>Line</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </i>
                         </div>
                     </div>
                     <div class="movie-info">
@@ -31,4 +48,6 @@
 
         output.html(results)
     })
+
+    render()
 </script>
