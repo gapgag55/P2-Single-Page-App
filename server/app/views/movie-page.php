@@ -39,6 +39,7 @@
                 <b>Crew</b>
                 <p id="crew"></p>
             </div>
+            <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
         </div>
         <div class="col-9">
             <div class="youtube row">
@@ -50,13 +51,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="border-bottom"></div>  
             <div class="border-bottom">
                 <b id="rating"></b>
                 <p id="description">"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
             </div>
             <div class="spotify border-bottom">
-                <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
+                
             </div>
             <div class="twitter">
                 <b>Comment <span>67% talked Good From 1,200 comments</span></b>

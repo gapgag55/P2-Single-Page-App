@@ -7,7 +7,6 @@ MovieApi.prototype.request = function (api, data, callback) {
     $.ajax({
         url: api,
         method: "GET",
-        async: false,
         data: Object.assign({}, data, {api_key: this.key})
     })
     .done(function(response) {
