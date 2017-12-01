@@ -71,9 +71,8 @@ function popup() {
 
             wrapper.html(output)
 
-            var icon  = $('.icon-close')
-            icon.on('click', function () {
-                popup.parent().removeClass('is-visible')
+            $('.icon-close').on('click', function () {
+                popup.removeClass('is-visible')
             })
         })
     })
