@@ -24,7 +24,7 @@
 }
 
 .top-page .movie {
-    width: 49%;
+    width: 48%;
     display: flex;
     margin-bottom: 20px; 
 }
@@ -47,6 +47,7 @@
     background-position: center;
     position: relative;
     margin-right: 10px;
+    overflow: hidden;
 }
 
 .top-page .movie-info {
@@ -83,7 +84,7 @@
 
 .not-found .wrapper h3 {
     font-family: 'HelveticaNeueBold';
-    font-size: 85px;
+    font-size: 17vw;
     text-align: center;
 }
 
