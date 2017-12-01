@@ -66,9 +66,6 @@ MovieApi.prototype.getSpotify = function(title, callback) {
     }, 500);
 }
 
-
-
-
 MovieApi.prototype.getPersonPopular = function (callback) {
     this.request(this.baseurl + 'person/popular', null, callback)
 }

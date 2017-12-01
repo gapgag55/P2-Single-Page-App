@@ -4,18 +4,7 @@
     </div>
     <div id="largest-page" class="movie-list-body"></div>
     <div id="popup" class="popup">
-        <div class="wrapper">
-            <i class="icon-close"></i>
-            <div class="flex">
-                <div id="people-avatar" class="left bg"></div> 
-                <div class="right">
-                    <h3 id="people-title"></h3>
-                    <span id="people-popularity"></span>
-                    <p id="people-detail"></p>
-                    <div id="people-link"></a>
-                </div>
-            </div>
-        </div>
+        <div class="wrapper"></div>
     </div>
 </div>
 
@@ -30,7 +19,7 @@ api.getPersonPopular(function (data) {
             <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.profile_path})">
             </div>
             <div class="movie-info">
-                <div class="movie-title"><a href="/person/${item.id}">${item.name}</a></div>
+                <div class="movie-title">${item.name}</div>
                 <div class="movie-detail">Popularity: ${item.popularity}</div>
             </div>           
         </div>
@@ -44,57 +33,50 @@ api.getPersonPopular(function (data) {
 
 function popup() {
     var people = $('.people .movie')
-    var name = $('#people-title')
-    var avatar = $('#people-avatar')
-    var popularity = $('#people-popularity')
-    var detail = $('#people-detail')
-    var link = $('#people-link')
-
     var popup = $('#popup')
-    var icon  = $('.icon-close')
-
-    icon.on('click', function () {
-        popup.removeClass('is-visible')
-    })
+    var wrapper = popup.children('.wrapper')
 
     $('body').on('click', function () {
         popup.removeClass('is-visible')
     })
 
-    popup.children('.wrapper').on('click', function (e) {
+    wrapper.on('click', function (e) {
         e.stopPropagation()
     })
 
     people.on('click', function (e) {
-        e.stopPropagation()
+        var link = ''
 
-        resetPopup()
+        e.stopPropagation()
         popup.addClass('is-visible')
+        wrapper.html('<div class="load">Loading...</div>')
     
         api.getPersonDetail($(this).attr('key'), function (data) {
-            name.html(data.name)
-            avatar.css({
-                'background-image': `url(https://image.tmdb.org/t/p/w500/${data.profile_path})`
+          
+            if( data.homepage ) {
+                link = `<div id="people-link" onclick="window.open("${data.homepage}", "_blank", "")">${data.homepage}</a>`
+            }
+
+           var output = `
+                <i class="icon-close"></i>
+                <div class="flex">
+                    <div id="people-avatar" class="left bg" style="background-image: url(https://image.tmdb.org/t/p/w500/${data.profile_path})"></div> 
+                    <div class="right">
+                        <h3 id="people-title">${data.name}</h3>
+                        <span id="people-popularity">popularity: ${data.popularity}</span>
+                        <p id="people-detail">${data.biography}</p>
+                        ${link}
+                    </div>
+                </div>`
+
+            wrapper.html(output)
+
+            var icon  = $('.icon-close')
+            icon.on('click', function () {
+                popup.parent().removeClass('is-visible')
             })
-            popularity.html('popularity: ' + data.popularity)
-            detail.html(data.biography)
-            link.attr('href', data.homepage)
-            link.html(data.homepage)
-            link.attr('onclick', `window.open("${data.homepage}", "_blank", "")`)
         })
     })
-
-    function resetPopup() {
-        name.html('')
-        avatar.css({
-            'background-image': `url()`
-        })
-        popularity.html('')
-        detail.html('')
-        link.attr('')
-        link.html('')
-        link.attr('')
-    }
 }
 
 </script>

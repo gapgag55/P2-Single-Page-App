@@ -540,11 +540,30 @@ ul {
       visibility: visible;
       opacity: 1;
   }
+
+  .people .movie-title {
+      border-bottom: 1px solid transparent;
+      display: inline-block;
+  }
+
+  .people .movie-title:hover {
+        border-bottom: 1px solid #FFF;
+        padding-bottom: 2px;
+  }
   
   .people .wrapper {
       width: 45vw;
+      height: 70vh;
       background: #000;
       position: relative;
+  }
+
+  .people .wrapper .load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
   }
   
   .people .wrapper .flex {
