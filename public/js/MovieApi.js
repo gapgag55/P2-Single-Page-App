@@ -29,10 +29,6 @@ MovieApi.prototype.getNowPlaying = function (callback) {
     this.request(this.baseurl + 'movie/now_playing', null, callback)
 }
 
-MovieApi.prototype.getPersonPopular = function (callback) {
-    this.request(this.baseurl + 'person/popular', null, callback)
-}
-
 MovieApi.prototype.getById = function (id, callback) {
     this.request(this.baseurl + 'movie/' + id, null, callback)
 }
@@ -68,4 +64,15 @@ MovieApi.prototype.getSpotify = function(title, callback) {
     setTimeout(() => {
         this.request( '/P2/spotify/' + title, null, callback)
     }, 500);
+}
+
+
+
+
+MovieApi.prototype.getPersonPopular = function (callback) {
+    this.request(this.baseurl + 'person/popular', null, callback)
+}
+
+MovieApi.prototype.getPersonDetail = function (id, callback) {
+    this.request(this.baseurl + 'person/' + id, null, callback)
 }
