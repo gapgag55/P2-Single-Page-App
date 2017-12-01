@@ -87,15 +87,17 @@ function updateSlide() {
     
     let counter = 0
     let element = $('.movie-list-body')
-    let width = element.width() + 10
+    let width = element.width() + parseInt($('.movie').css("margin-right").replace("px",""))
     let items = element.children('.movie').length 
-    let maxClick = Math.floor(items / 5)-1
-
+    let movieSize = $('.movie').width()
+    let numWindow = Math.floor(width/movieSize)
+    let maxClick = Math.floor(items / numWindow)-1
+    
     $("#left").on('click', moveSlide.bind(this, 'decrease'))
     $("#right").on('click', moveSlide.bind(this, 'increase'))
-
+    
     function moveSlide(trigger) {
-
+        
         switch (trigger) {
             case 'decrease': counter -= 1; break
             case 'increase': counter += 1; break
@@ -110,14 +112,14 @@ function updateSlide() {
             return false
         }
         if (counter == maxClick) {
-            counter = items/5-1
+            counter = items/numWindow-1
         }
 
         element.css({
             "-webkit-transform":`translate(${counter*-width}px)`
         })
 
-        if (counter == items/5-1) {
+        if (counter == items/numWindow-1) {
             counter = maxClick
         }
 
