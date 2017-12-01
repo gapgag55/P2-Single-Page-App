@@ -516,7 +516,16 @@ ul {
   #largest-page .movie-title {
       padding-bottom: 0;
   }
-  
+
+
+/*========================
+|*****  People Page ******|
+=========================*/
+ 
+  .people {
+      padding-top: 60px;
+  }
+
   .people .movie {
       cursor: pointer;
   }
