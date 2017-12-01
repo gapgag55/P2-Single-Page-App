@@ -80,17 +80,17 @@
 
 
 <script>
-    let title = $('#title')
-    let poster = $('#poster')
-    let rating = $('#rating')
-    let budgets = $('#budget')
-    let taglines = $('#tagline')
-    let release = $('#release')
-    let description = $('#description')
-    let crews = $('#crew')
-    let casts = $('#cast')
-    let playlists = $('#playlists')
-    let youtube = $('.youtube iframe')
+    var title = $('#title')
+    var poster = $('#poster')
+    var rating = $('#rating')
+    var budgets = $('#budget')
+    var taglines = $('#tagline')
+    var release = $('#release')
+    var description = $('#description')
+    var crews = $('#crew')
+    var casts = $('#cast')
+    var playlists = $('#playlists')
+    var youtube = $('.youtube iframe')
 
     var api = new MovieApi() 
 
@@ -117,16 +117,16 @@
     api.getCredits(<?= $id; ?>, function(data) {
         let {cast, crew} = data
 
-        cast = cast.map(function (item) {
-            return item.name
-        })
+        // cast = cast.map(function (item) {
+        //     return item.name
+        // })
 
-        crew = crew.map(function (item) {
-            return item.name
-        })
+        // crew = crew.map(function (item) {
+        //     return item.name
+        // })
 
-        casts.html(cast.toString())
-        crews.html(crew.toString())
+        // casts.html(cast.toString())
+        // crews.html(crew.toString())
     })
     api.getYoutube(title.html(), function (data) {
         let active = '' 

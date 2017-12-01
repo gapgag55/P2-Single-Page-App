@@ -25,6 +25,7 @@ return array(
     'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => $vendorDir . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
     'App\\Controllers\\MovieController' => $baseDir . '/app/controllers/MovieController.php',
     'App\\Controllers\\PageControllers' => $baseDir . '/app/controllers/PageController.php',
+    'App\\Controllers\\PersonController' => $baseDir . '/app/controllers/PersonController.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
     'App\\Model\\SpotifyModel' => $baseDir . '/app/models/SpotifyModel.php',

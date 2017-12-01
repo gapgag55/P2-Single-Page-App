@@ -39,9 +39,9 @@ class PageControllers
     /**
      * Show the playing page.
      */
-    public function lastest()
+    public function people()
     {
-        return view('lastest-page');
+        return view('people-page');
     }
 
    /**

@@ -71,7 +71,7 @@ class Router
             );
         }
 
-        $this->callAction('NotFoundController', 'index');
+        $this->callAction('PageControllers', 'error');
     }
 
     /**
@@ -82,7 +82,6 @@ class Router
      */
     protected function callAction($controller, $action) 
     {
-
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
 

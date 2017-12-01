@@ -104,7 +104,11 @@ class Request
      */
     public function api($method, $uri, $parameters = [], $headers = [])
     {
-        return $this->send($method, self::API_URL . $uri, $parameters, $headers);
+        try {
+            return $this->send($method, self::API_URL . $uri, $parameters, $headers);
+        } catch (Exception $e) {
+            return '';
+        }
     }
 
     /**

@@ -52,6 +52,7 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
         'App\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/controllers/MovieController.php',
         'App\\Controllers\\PageControllers' => __DIR__ . '/../..' . '/app/controllers/PageController.php',
+        'App\\Controllers\\PersonController' => __DIR__ . '/../..' . '/app/controllers/PersonController.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Model\\SpotifyModel' => __DIR__ . '/../..' . '/app/models/SpotifyModel.php',
