@@ -6,15 +6,15 @@
             <i class="icon-share">
                 <div class="share">
                     <ul>
-                        <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                        <li id="share-facebook">
                             <i class="icon-facebook"></i>
                             <p>Facebook</p>
                         </li>
-                        <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                        <li id="share-twitter">
                             <i class="icon-twitter"></i>
                             <p>Twitter</p>
                         </li>
-                        <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                        <li id="share-line">
                             <i class="icon-line"></i>
                             <p>Line</p>
                         </li>
@@ -81,6 +81,9 @@
     var youtube = $('.youtube iframe')
     var twitter = $('#twitter')
     var spotify = $('#spotify')
+    var shareFacebook = $('#share-facebook')
+    var shareTwitter = $('#share-twitter')
+    var shareLine = $('#share-line')
 
     var api = new MovieApi() 
 
@@ -88,6 +91,7 @@
         let {
             id,
             original_title,
+            imdb_id,
             overview,
             poster_path,
             budget,
@@ -106,6 +110,10 @@
         taglines.html(tagline)
         rating.html(`Rating: ${vote_average} / 10`)
         release.html(release_date)
+
+        shareFacebook.attr('onclick', `window.open("https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
+        shareTwitter.attr('onclick', `window.open("https://twitter.com/share?text=${original_title}&url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
+        shareLine.attr('onclick', `window.open("https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
 
         getApiServer()
         
