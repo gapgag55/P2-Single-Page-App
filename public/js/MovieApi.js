@@ -67,5 +67,5 @@ MovieApi.prototype.getComment = function(title, callback) {
 MovieApi.prototype.getSpotify = function(title, callback) {
     setTimeout(() => {
         this.request( '/P2/spotify/' + title, null, callback)
-    }, 300);
+    }, 500);
 }

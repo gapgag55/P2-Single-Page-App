@@ -39,7 +39,6 @@
                 <b>Crew</b>
                 <p id="crew"></p>
             </div>
-            <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
         </div>
         <div class="col-9">
             <div class="youtube row">
@@ -55,8 +54,8 @@
                 <b id="rating"></b>
                 <p id="description">"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
             </div>
-            <div class="spotify border-bottom">
-                
+            <div class="spotify bottom">
+                <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
             </div>
             <div class="twitter">
                 <b>Comment <span>67% talked Good From 1,200 comments</span></b>
@@ -107,6 +106,8 @@
         taglines.html(tagline)
         rating.html(`Rating: ${vote_average} / 10`)
         release.html(release_date)
+
+        getApiServer()
         
     })
     api.getCredits(<?= $id; ?>, function(data) {
@@ -147,29 +148,32 @@
 
         playlist()
     })
-    api.getComment(title.html(), function(data) {
-        data = JSON.parse( data )
-        let output;
 
-        $.each(data, function(index, item) {
-            output = `
-                <li class="row col-6">
-                    <div class="col-3">
-                        <div class="bg" style="background-image: url(${item.user.profile_image_url})"></div>
-                    </div>
-                    <div class="col-9">
-                        <b>${item.user.name}</b>
-                        <p>${item.text}</p>
-                    </div>
-                </li>
-                `
-            twitter.append(output)
+    function getApiServer() {
+        api.getComment(title.html(), function(data) {
+            data = JSON.parse( data )
+            let output;
+
+            $.each(data, function(index, item) {
+                output = `
+                    <li class="row col-6">
+                        <div class="col-3">
+                            <div class="bg" style="background-image: url(${item.user.profile_image_url})"></div>
+                        </div>
+                        <div class="col-9">
+                            <b>${item.user.name}</b>
+                            <p>${item.text}</p>
+                        </div>
+                    </li>
+                    `
+                twitter.append(output)
+            })
         })
-    })
-    api.getSpotify(title.html(), function(data) {
-        data = data.replace(/\"/g, '')
-        spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
-    })
+        api.getSpotify(title.html(), function(data) {
+            data = data.replace(/\"/g, '')
+            spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
+        })
+    }
 
     function playlist() {
         playlists.find('li').on('click', function () {

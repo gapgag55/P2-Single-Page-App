@@ -25,8 +25,7 @@ class MovieController
     }
 
     public function getSpotify() {
-        echo json_encode(
-            (new SpotifyModel())->playlist($_GET['id'])
-        );
+        $spotify = (new SpotifyModel())->playlist($_GET['id']);
+        echo json_encode($spotify);
     }
 }
