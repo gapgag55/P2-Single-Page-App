@@ -128,11 +128,10 @@
                     output.html(results)
                     render()
 
+                    if ( output.is(':empty') ) {
+                        output.html("Oops! The movie was not found!")
+                    }
                 })
-
-            if ( output.is(':empty') ) {
-                output.html("Oops! The movie was not found!")
-            }
 
             } else {
                 movieApi()
