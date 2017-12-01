@@ -1,8 +1,8 @@
 <div id="movie-single" class="movie-single container">
     <div class="movie-list-title">
-        <h1 id="title"><?= $keyword; ?></h1>
+        <h1 id="title"></h1>
         <div class="pointer">
-            <i class="favorite icon-add" key=${item.id}></i> 
+            <i class="favorite icon-add" id="favorites"></i> 
             <i class="icon-share">
                 <div class="share">
                     <ul>
@@ -56,23 +56,11 @@
                 <p id="description">"A mysterious guide escorts an enthusiastic adventurer and his friend into the Amazon jungle, but their journey turns into a terrifying ordeal as the darkest elements of human nature and the deadliest threats of the wild force them to fight for survival."</p>
             </div>
             <div class="spotify border-bottom">
-                <iframe src="https://open.spotify.com/embed?uri=<?= $spotify; ?>" height="380" frameborder="0" allowtransparency="true"></iframe>
+                <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
             </div>
             <div class="twitter">
                 <b>Comment <span>67% talked Good From 1,200 comments</span></b>
-                <ul class="row">
-                    <?php foreach($tweets as $tweet): ?>
-                    <li class="row col-6">
-                        <div class="col-3">
-                            <div class="bg" style="background-image: url(<?= $tweet->user->profile_image_url; ?>)"></div>
-                        </div>
-                        <div class="col-9">
-                            <b><?= $tweet->user->name; ?></b>
-                            <p><?= $tweet->text; ?></p>
-                        </div>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
+                <ul id="twitter" class="row"></ul>
             </div>
         </div>
     </div>
@@ -89,13 +77,18 @@
     var description = $('#description')
     var crews = $('#crew')
     var casts = $('#cast')
+    var favorite = $("#favorites")
     var playlists = $('#playlists')
     var youtube = $('.youtube iframe')
+    var twitter = $('#twitter')
+    var spotify = $('#spotify')
 
     var api = new MovieApi() 
 
     api.getById(<?= $id; ?>, function (data) {
         let {
+            id,
+            original_title,
             overview,
             poster_path,
             budget,
@@ -104,6 +97,8 @@
             release_date
         } = data 
 
+        title.html(original_title)
+        favorite.attr('key', id)
         description.html(overview)
         poster.css({
             'background-image': `url(https://image.tmdb.org/t/p/w500/${poster_path})`
@@ -151,6 +146,29 @@
         })
 
         playlist()
+    })
+    api.getComment(title.html(), function(data) {
+        data = JSON.parse( data )
+        let output;
+
+        $.each(data, function(index, item) {
+            output = `
+                <li class="row col-6">
+                    <div class="col-3">
+                        <div class="bg" style="background-image: url(${item.user.profile_image_url})"></div>
+                    </div>
+                    <div class="col-9">
+                        <b>${item.user.name}</b>
+                        <p>${item.text}</p>
+                    </div>
+                </li>
+                `
+            twitter.append(output)
+        })
+    })
+    api.getSpotify(title.html(), function(data) {
+        data = data.replace(/\"/g, '')
+        spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
     })
 
     function playlist() {

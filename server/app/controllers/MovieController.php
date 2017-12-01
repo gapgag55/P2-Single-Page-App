@@ -13,31 +13,20 @@ class MovieController
      */
     public function index()
     {
-        $keyword = $this->searchKeyword();
-        
-        $tweets  = (new TwitterModel())->searchTweet($keyword)->statuses;
-        $spotify = (new SpotifyModel())->playlist($keyword);
-     
         return view('movie-page', [
-            'id' => $_GET['id'],
-            'tweets' => $tweets,
-            'spotify' => $spotify,
-            'keyword' => $keyword
+            'id' => $_GET['id']
         ]);
     }
 
-    public function searchKeyword() {
-        $api = 'https://api.themoviedb.org/3/movie/'. $_GET['id'];
-        $key = '?api_key=aea1c02a2029aa398e2ea649ca42615a';
-        $api .= $key; 
+    public function getCommentTwitter() {
+        echo json_encode((new TwitterModel())->searchTweet(
+            $_GET['id']
+        )->statuses);
+    }
 
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, $api); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch,CURLOPT_ENCODING , "gzip");
-        $output = curl_exec($ch); 
-        curl_close($ch);
-
-        return json_decode( $output )->original_title;
+    public function getSpotify() {
+        echo json_encode(
+            (new SpotifyModel())->playlist($_GET['id'])
+        );
     }
 }

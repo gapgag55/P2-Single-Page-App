@@ -494,5 +494,26 @@ header li.is-active a:after {
 }
 
 .movie-single .icon-share li {
+    display: flex;
+    align-items: center;
+}
+
+.movie-single .icon-share p {
     padding-right: 50px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 13px;
+}
+
+#largest-page.movie-list-body {
+    flex-wrap: wrap;
+}
+
+#largest-page.movie-list-body .movie {
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+#largest-page .movie-title {
+    padding-bottom: 0;
 }

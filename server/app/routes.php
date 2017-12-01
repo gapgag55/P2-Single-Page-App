@@ -18,6 +18,12 @@ $router->get('/movie', 'MovieController@index');
 $router->get('/twitter', 'MovieController@getCommentTwitter');
 
 /*
+ * GET uri Spotify
+ */
+$router->get('/spotify', 'MovieController@getSpotify');
+
+
+/*
  * GET people
  */
 $router->get('/person', 'PersonController@index');

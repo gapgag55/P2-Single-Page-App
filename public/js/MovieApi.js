@@ -3,7 +3,7 @@ function MovieApi() {
     this.key = 'aea1c02a2029aa398e2ea649ca42615a'
 }
 
-MovieApi.prototype.request = async function (api, data, callback) {
+MovieApi.prototype.request = function (api, data, callback) {
     $.ajax({
         url: api,
         method: "GET",
@@ -30,16 +30,13 @@ MovieApi.prototype.getNowPlaying = function (callback) {
     this.request(this.baseurl + 'movie/now_playing', null, callback)
 }
 
-MovieApi.prototype.getLastest = function (callback) {
-    this.request(this.baseurl + 'movie/latest', null, callback)
+MovieApi.prototype.getPersonPopular = function (callback) {
+    this.request(this.baseurl + 'person/popular', null, callback)
 }
 
 MovieApi.prototype.getById = function (id, callback) {
     this.request(this.baseurl + 'movie/' + id, null, callback)
 }
-
-// MovieApi.prototype.getByMonth = function () {
-// }
 
 MovieApi.prototype.getbySearch = function (query, callback) {
     this.request(this.baseurl + 'search/movie', {query: query}, callback)
@@ -60,4 +57,16 @@ MovieApi.prototype.getYoutube = function(query, callback) {
             maxResults: 12
         },
         callback)
+}
+
+MovieApi.prototype.getComment = function(title, callback) {
+    setTimeout(() => {
+        this.request( '/P2/twitter/' + title, null, callback)
+    }, 500);
+}
+
+MovieApi.prototype.getSpotify = function(title, callback) {
+    setTimeout(() => {
+        this.request( '/P2/spotify/' + title, null, callback)
+    }, 300);
 }

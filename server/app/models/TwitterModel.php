@@ -21,7 +21,7 @@ class TwitterModel {
     public function searchTweet($keyword) {
         return $this->twitter->get("search/tweets", [
             "q" => $keyword,
-            "count" => 2
+            "count" => 20
         ]);
     }
 
