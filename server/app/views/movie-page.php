@@ -113,16 +113,16 @@
     api.getCredits(<?= $id; ?>, function(data) {
         let {cast, crew} = data
 
-        // cast = cast.map(function (item) {
-        //     return item.name
-        // })
+        cast = cast.map(function (item) {
+            return item.name
+        })
 
-        // crew = crew.map(function (item) {
-        //     return item.name
-        // })
+        crew = crew.map(function (item) {
+            return item.name
+        })
 
-        // casts.html(cast.toString())
-        // crews.html(crew.toString())
+        casts.html(cast.toString())
+        crews.html(crew.toString())
     })
     api.getYoutube(title.html(), function (data) {
         let active = '' 
