@@ -63,7 +63,9 @@
         width: 90px;
     }
 
-   
+    #twitter {
+        flex-direction: row;
+    }
 }
 
 @media (max-width: 575px) { 
