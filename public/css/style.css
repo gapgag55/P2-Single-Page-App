@@ -134,6 +134,10 @@ ul {
       left: 50%;
       transform: translateX(-50%);
   }
+
+  .hamburger {
+      display: none;
+  }
   
   /*========================
   |******  HOME PAGE *******|
@@ -658,6 +662,7 @@ ul {
     }
 
     .hamburger {
+        display: block;
         font-size: 30px;
     }
 
