@@ -88,6 +88,7 @@
     var api = new MovieApi() 
 
     api.getById(<?= $id; ?>, function (data) {
+        console.log(data)
         let {
             id,
             original_title,
@@ -115,7 +116,32 @@
         shareTwitter.attr('onclick', `window.open("https://twitter.com/share?text=${original_title}&url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
         shareLine.attr('onclick', `window.open("https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
 
-        getApiServer()
+        api.getYoutube(original_title, function (data) {
+            let active = '' 
+
+            $.each(data.items, function (index, item) {
+                active = ''
+
+                if (index == 0) {
+                    active = 'is-active'
+                    youtube.attr('src', `https://www.youtube.com/embed/${item.id.videoId}`)
+                }
+
+                playlists.append( `
+                    <li class="${active}" key="${item.id.videoId}">
+                        <div class="bg" style="background-image:url(${item.snippet.thumbnails.default.url});"></div>
+                        <div class="detail">
+                            <b>${item.snippet.title}</b>
+                            <p>${item.snippet.channelTitle}</p>
+                        </div>
+                    </li>
+                `)
+            })
+
+            playlist()
+        })
+
+        getApiServer(original_title)
         
     })
     api.getCredits(<?= $id; ?>, function(data) {
@@ -132,33 +158,9 @@
         casts.html(cast.toString())
         crews.html(crew.toString())
     })
-    api.getYoutube(title.html(), function (data) {
-        let active = '' 
 
-        $.each(data.items, function (index, item) {
-            active = ''
-
-            if (index == 0) {
-                active = 'is-active'
-                youtube.attr('src', `https://www.youtube.com/embed/${item.id.videoId}`)
-            }
-
-            playlists.append( `
-                <li class="${active}" key="${item.id.videoId}">
-                    <div class="bg" style="background-image:url(${item.snippet.thumbnails.default.url});"></div>
-                    <div class="detail">
-                        <b>${item.snippet.title}</b>
-                        <p>${item.snippet.channelTitle}</p>
-                    </div>
-                </li>
-            `)
-        })
-
-        playlist()
-    })
-
-    function getApiServer() {
-        api.getComment(title.html(), function(data) {
+    function getApiServer(title) {
+        api.getComment(title, function(data) {
             data = JSON.parse( data )
             let output;
 
@@ -177,7 +179,7 @@
                 twitter.append(output)
             })
         })
-        api.getSpotify(title.html(), function(data) {
+        api.getSpotify(title, function(data) {
             data = data.replace(/\"/g, '')
             spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
         })

@@ -11,13 +11,11 @@
 
     var ids = localStorage.getItem('favorites');
     var res = JSON.parse(ids)
-    console.log(res)
 
     for(var i = 0; i < res.length; i++) {
         let id = res[i]
 
         api.getById(id, function (item) {
-            console.log(item)
             var result = `
                 <div class="movie">
                     <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.poster_path})">
@@ -46,13 +44,15 @@
                     </div>  
                 </div>
             `
-            output.append(result)    
+
+            output.append(result) 
+            getRemove()
         })
     }
 
     function getRemove() {
         
-        let icons = $('.movie-fav .movie .favorite')
+        let icons = $('.movie-fav .favorite')
         icons.on('click', function () {
 
             let parent = $(this).parent().parent().parent()
@@ -69,10 +69,11 @@
                 })
             }
         })
+    }
 
-   }
-
-   render()
-   getRemove()
+   setTimeout(() => {
+        render()
+        getRemove()
+    }, 400);
    
     </script>

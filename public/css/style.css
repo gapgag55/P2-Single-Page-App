@@ -361,7 +361,8 @@ ul {
   /*========================
   |*****  Movie Page *******|
   =========================*/
-  .movie-single {
+  .movie-single,
+  .favorite-page {
       padding: 40px 0;
   }
   
@@ -632,3 +633,11 @@ ul {
       display: block;
       cursor: pointer;
   }
+
+
+/*========================
+|***  Menu Responsive ***|
+=========================*/
+@media (max-width: 991px) { 
+       
+}

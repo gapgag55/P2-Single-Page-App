@@ -18,44 +18,47 @@ function favorites() {
 
 
     /*
-     * Add Movie to cookie in browser
+     * Add Movie to localStorage in browser
      */
-    $.each($('.favorite'), function (index, value) {
-        $(value).on('click', function () {
+    $('.favorite').on('click', function () {
 
-            let id =  $(this).attr('key')
-            let item = localStorage.getItem('favorites')
-            item = JSON.parse(item)
+        let id =  $(this).attr('key')
+        let item = localStorage.getItem('favorites')
+        item = JSON.parse(item)
 
-            if (item) {
-                if (item.indexOf(id) < 0) {
-                    /*
-                     * Add Movie to browser
-                     */
-                    item.push(id)
-                    localStorage.setItem('favorites', JSON.stringify(item));
-                    
-                    $(this).addClass('icon-close')
-                    $(this).removeClass('icon-add')
-                } else {
-                    /*
-                     * Remove Movie in browser
-                     */
-                    let index = item.indexOf(id)
-                    item.splice(index, 1)
-
-                    localStorage.setItem('favorites', JSON.stringify(item));
-
-                    $(this).addClass('icon-add')
-                    $(this).removeClass('icon-close')
-                }
-            } else {
-                localStorage.setItem('favorites', JSON.stringify([id]));
-
+        if (item) {
+            if (item.indexOf(id) < 0) {
+                /*
+                 * Add Movie to browser
+                 */
+                item.push(id)
+                localStorage.setItem('favorites', JSON.stringify(item));
+                
                 $(this).addClass('icon-close')
                 $(this).removeClass('icon-add')
+            } else {
+                /*
+                 * Remove Movie in browser
+                 */
+                console.log("Remove")
+                let index = item.indexOf(id)
+                item.splice(index, 1)
+                console.log(item, id)
+
+                localStorage.setItem('favorites', JSON.stringify(item));
+
+                $(this).addClass('icon-add')
+                $(this).removeClass('icon-close')
+                // console.log(this)
+  
             }
-        })
+        } else {
+            localStorage.setItem('favorites', JSON.stringify([id]));
+
+            $(this).addClass('icon-close')
+            $(this).removeClass('icon-add')
+        }
+
     })
 }
 
@@ -87,7 +90,8 @@ function updateSlide() {
     
     let counter = 0
     let element = $('.movie-list-body')
-    let width = element.width() + parseInt($('.movie').css("margin-right").replace("px",""))
+    let marginRight = parseInt($('.movie').css("margin-right"))
+    let width = element.width() + marginRight
     let items = element.children('.movie').length 
     let movieSize = $('.movie').width()
     let numWindow = Math.floor(width/movieSize)
