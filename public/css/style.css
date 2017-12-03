@@ -656,10 +656,10 @@ ul {
         padding: 15px 30px;
         position: fixed;
         top: 0;
-        left: 50%;
+        left: 0;
         z-index: 999;
         background-color: #181818;
-        transform: translateX(-50%);
+        max-width: 100%;
     }
 
     .hamburger {
