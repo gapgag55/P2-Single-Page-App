@@ -46,6 +46,23 @@
     .favorite-page .movie {
         width: 33%;
     }
+    #movie-single .row.first {
+        flex-direction: column;
+    }
+
+    .movie-single .bg {
+        width: 50%;
+    }
+
+    #movie-single .row.first .col-3,
+    #movie-single .row.first .col-9 {
+        max-width: 100%;
+    }
+
+    .movie-single .twitter .bg {
+        width: 90px;
+    }
+
    
 }
 
@@ -152,6 +169,10 @@
     .people .wrapper .right{
         overflow-y: auto;
         height: 100vh;
+    }
+
+    .movie-single .bg {
+        width: 100%;
     }
 }
 

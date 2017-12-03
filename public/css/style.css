@@ -80,13 +80,8 @@ ul {
   =========================*/
   header {
       display: flex; 
-      align-items: center;
       justify-content: space-between;
       padding: 20px 0;
-  }
-
-  header > a {
-      margin-right: 10px;
   }
   
   header .logo {
@@ -133,10 +128,6 @@ ul {
       bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
-  }
-
-  .hamburger {
-      display: none;
   }
   
   /*========================
@@ -370,8 +361,7 @@ ul {
   /*========================
   |*****  Movie Page *******|
   =========================*/
-  .movie-single,
-  .favorite-page {
+  .movie-single {
       padding: 40px 0;
   }
   
@@ -642,61 +632,3 @@ ul {
       display: block;
       cursor: pointer;
   }
-
-
-/*========================
-|***  Menu Responsive ***|
-=========================*/
-@media (max-width: 991px) { 
-    body {
-        padding-top: 80px;
-    }
-
-    header.container {
-        padding: 15px 30px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background-color: #181818;
-    }
-
-    .hamburger {
-        display: block;
-        font-size: 30px;
-    }
-
-    nav, 
-    ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-
-    nav {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        z-index: 1000;
-        background-color: #181818;
-    }  
-
-    nav li {
-        padding: 20px 0;
-    }
-
-    nav.is-visible {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    nav.is-visible + .hamburger {
-        position: relative;
-        z-index: 1000;
-    }
-
-}

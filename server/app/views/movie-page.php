@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row first">
         <div class="col-3">
             <div id="poster" class="bg"></div>
             <div class="group">
