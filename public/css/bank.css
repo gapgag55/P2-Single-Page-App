@@ -111,5 +111,32 @@
         font-size: 5vh;
         margin: 32px 0;
     }
+
+    #largest-page.movie-list-body {
+        flex-direction: column;
+    }
+
+    #largest-page.movie-list-body .movie {
+        width: 100%;
+    }
+
+    #largest-page .movie-img {
+        height: 250px;
+    }
+
+    .people .wrapper .bg {
+        display: none;
+    }
+
+    .people .wrapper {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .people .wrapper .right{
+        overflow-y: auto;
+        height: 100vh;
+    }
+
 }
 

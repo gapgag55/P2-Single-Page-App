@@ -38,6 +38,7 @@ function popup() {
 
     $('body').on('click', function () {
         popup.removeClass('is-visible')
+        $('body').css("overflow-y","scroll")
     })
 
     wrapper.on('click', function (e) {
@@ -46,7 +47,7 @@ function popup() {
 
     people.on('click', function (e) {
         var link = ''
-
+        $('body').css("overflow-y","hidden")
         e.stopPropagation()
         popup.addClass('is-visible')
         wrapper.html('<div class="load">Loading...</div>')
@@ -73,6 +74,7 @@ function popup() {
 
             $('.icon-close').on('click', function () {
                 popup.removeClass('is-visible')
+                $('body').css("overflow-y","scroll")
             })
         })
     })
