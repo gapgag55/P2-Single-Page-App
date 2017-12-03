@@ -43,13 +43,11 @@ function favorites() {
                 console.log("Remove")
                 let index = item.indexOf(id)
                 item.splice(index, 1)
-                console.log(item, id)
 
                 localStorage.setItem('favorites', JSON.stringify(item));
 
                 $(this).addClass('icon-add')
                 $(this).removeClass('icon-close')
-                // console.log(this)
   
             }
         } else {

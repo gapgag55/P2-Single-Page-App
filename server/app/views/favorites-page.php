@@ -10,44 +10,58 @@
     var output = $('#favorite')
 
     var ids = localStorage.getItem('favorites');
-    var res = JSON.parse(ids)
+    var res = Array.from(JSON.parse(ids))
+    getFavorites(res)
 
-    for(var i = 0; i < res.length; i++) {
-        let id = res[i]
+    function getFavorites(ids) {
+        if (ids[0] == null) {
+            return
+        }
 
-        api.getById(id, function (item) {
-            var result = `
-                <div class="movie">
-                    <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.poster_path})">
-                        <div class="action-group">
-                            <i class="favorite icon-add" key=${id}></i>
-                            <a href="/movie/${id}" class="icon-play"></a>
-                            <i class="icon-share">
-                                <div class="share">
-                                    <ul>
-                                        <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
-                                            <i class="icon-facebook"></i>
-                                            <p>Facebook</p>
-                                        </li>
-                                        <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
-                                            <i class="icon-twitter"></i>
-                                            <p>Twitter</p>
-                                        </li>
-                                        <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
-                                            <i class="icon-line"></i>
-                                            <p>Line</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </i>
-                        </div>
-                    </div>  
-                </div>
-            `
+        api.getById(ids[0])
+            .then(function (data) {
+                let result = display(data)
+                output.append(result) 
+            })
+            .then(function () {
+                ids.splice(0, 1)
+                getFavorites(ids)
+            })
+            .then(function () {
+                render()
+                getRemove()
+            })
+    }
 
-            output.append(result) 
-            getRemove()
-        })
+    function display(item) {
+        return `
+            <div class="movie">
+                <div class="movie-img" style="background-image: url(https://image.tmdb.org/t/p/w500/${item.poster_path})">
+                    <div class="action-group">
+                        <i class="favorite icon-add" key=${item.id}></i>
+                        <a href="/movie/${item.id}" class="icon-play"></a>
+                        <i class="icon-share">
+                            <div class="share">
+                                <ul>
+                                    <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                        <i class="icon-facebook"></i>
+                                        <p>Facebook</p>
+                                    </li>
+                                    <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                        <i class="icon-twitter"></i>
+                                        <p>Twitter</p>
+                                    </li>
+                                    <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                        <i class="icon-line"></i>
+                                        <p>Line</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </i>
+                    </div>
+                </div>  
+            </div>
+        `
     }
 
     function getRemove() {
@@ -70,10 +84,4 @@
             }
         })
     }
-
-   setTimeout(() => {
-        render()
-        getRemove()
-    }, 400);
-   
-    </script>
+</script>

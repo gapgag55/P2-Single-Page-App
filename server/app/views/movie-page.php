@@ -87,101 +87,121 @@
 
     var api = new MovieApi() 
 
-    api.getById(<?= $id; ?>, function (data) {
-        let {
-            id,
-            original_title,
-            imdb_id,
-            overview,
-            poster_path,
-            budget,
-            tagline,
-            vote_average,
-            release_date
-        } = data 
+    api.getById(<?= $id; ?>)
+        .then(function (data) {
+            let {
+                id,
+                original_title,
+                imdb_id,
+                overview,
+                poster_path,
+                budget,
+                tagline,
+                vote_average,
+                release_date
+            } = data 
 
-        title.html(original_title)
-        favorite.attr('key', id)
-        description.html(overview)
-        poster.css({
-            'background-image': `url(https://image.tmdb.org/t/p/w500/${poster_path})`
-        })
-        budgets.html(budget.toLocaleString())
-        taglines.html(tagline)
-        rating.html(`Rating: ${vote_average} / 10`)
-        release.html(release_date)
-
-        shareFacebook.attr('onclick', `window.open("https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
-        shareTwitter.attr('onclick', `window.open("https://twitter.com/share?text=${original_title}&url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
-        shareLine.attr('onclick', `window.open("https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
-
-        api.getYoutube(original_title, function (data) {
-            let active = '' 
-
-            $.each(data.items, function (index, item) {
-                active = ''
-
-                if (index == 0) {
-                    active = 'is-active'
-                    youtube.attr('src', `https://www.youtube.com/embed/${item.id.videoId}`)
-                }
-
-                playlists.append( `
-                    <li class="${active}" key="${item.id.videoId}">
-                        <div class="bg" style="background-image:url(${item.snippet.thumbnails.default.url});"></div>
-                        <div class="detail">
-                            <b>${item.snippet.title}</b>
-                            <p>${item.snippet.channelTitle}</p>
-                        </div>
-                    </li>
-                `)
+            title.html(original_title)
+            favorite.attr('key', id)
+            description.html(overview)
+            poster.css({
+                'background-image': `url(https://image.tmdb.org/t/p/w500/${poster_path})`
             })
+            budgets.html(budget.toLocaleString())
+            taglines.html(tagline)
+            rating.html(`Rating: ${vote_average} / 10`)
+            release.html(release_date)
 
+            shareFacebook.attr('onclick', `window.open("https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
+            shareTwitter.attr('onclick', `window.open("https://twitter.com/share?text=${original_title}&url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
+            shareLine.attr('onclick', `window.open("https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${imdb_id}", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500")`)
+
+            return new Promise((resolve, reject) => {
+                resolve(original_title)
+            })       
+        })
+        .then(function (title) {
+            api.getYoutube(title)
+                .then(function (data) {
+                    let active = '' 
+
+                    $.each(data.items, function (index, item) {
+                        active = ''
+
+                        if (index == 0) {
+                            active = 'is-active'
+                            youtube.attr('src', `https://www.youtube.com/embed/${item.id.videoId}`)
+                        }
+
+                        playlists.append( `
+                            <li class="${active}" key="${item.id.videoId}">
+                                <div class="bg" style="background-image:url(${item.snippet.thumbnails.default.url});"></div>
+                                <div class="detail">
+                                    <b>${item.snippet.title}</b>
+                                    <p>${item.snippet.channelTitle}</p>
+                                </div>
+                            </li>
+                        `)
+                    })
+                })
+
+            return new Promise((resolve, reject) => {
+                resolve(title)
+            })
+        })
+        .then(function (title) {
             playlist()
+            getApiServer(title)
+        })
+        .then(function () {
+            api.getCredits(<?= $id; ?>)
+                .then(function(data) {
+                    let {cast, crew} = data
+
+                    cast = cast.map(function (item) {
+                        return item.name
+                    })
+
+                    crew = crew.map(function (item) {
+                        return item.name
+                    })
+
+                    casts.html(cast.toString())
+                    crews.html(crew.toString())
+                })
+        })
+        .then(function () {
+            render()
         })
 
-        getApiServer(original_title)
-        
-    })
-    api.getCredits(<?= $id; ?>, function(data) {
-        let {cast, crew} = data
-
-        cast = cast.map(function (item) {
-            return item.name
-        })
-
-        crew = crew.map(function (item) {
-            return item.name
-        })
-
-        casts.html(cast.toString())
-        crews.html(crew.toString())
-    })
-
+    
     function getApiServer(title) {
-        api.getComment(title, function(data) {
-            data = JSON.parse( data )
-            let output;
+        api.getComment(title)
+            .then(function(data) {
+                data = JSON.parse( data )
+                let output;
 
-            $.each(data, function(index, item) {
-                output = `
-                    <li class="row col-6">
-                        <div class="col-3">
-                            <div class="bg" style="background-image: url(${item.user.profile_image_url})"></div>
-                        </div>
-                        <div class="col-9">
-                            <b>${item.user.name}</b>
-                            <p>${item.text}</p>
-                        </div>
-                    </li>
-                    `
-                twitter.append(output)
+                $.each(data, function(index, item) {
+                    output = `
+                        <li class="row col-6">
+                            <div class="col-3">
+                                <div class="bg" style="background-image: url(${item.user.profile_image_url})"></div>
+                            </div>
+                            <div class="col-9">
+                                <b>${item.user.name}</b>
+                                <p>${item.text}</p>
+                            </div>
+                        </li>
+                        `
+                    twitter.append(output)
+                })
             })
-        })
-        api.getSpotify(title, function(data) {
-            data = data.replace(/\"/g, '')
-            spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
-        })
+
+        api.getSpotify(title)
+            .then(function(data) {
+                data = data.replace(/\"/g, '')
+                spotify.attr('src', `https://open.spotify.com/embed?uri=${data}`)
+            })
     }
 
     function playlist() {
@@ -194,7 +214,5 @@
             youtube.attr('src', `https://www.youtube.com/embed/${$(this).attr('key')}`)
         })
     }
-
-    render()
     
 </script>
