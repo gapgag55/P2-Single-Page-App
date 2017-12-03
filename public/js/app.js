@@ -133,14 +133,22 @@ function updateSlide() {
 function MenuHamburger() {
     $('.hamburger').on('click', function () {
         $(this).toggleClass('icon-menu icon-close')
-
         $('nav').toggleClass('is-visible')
     })
+
+    $('nav li').on('click', function (e) {
+        $('.hamburger').removeClass('icon-close')
+        $('.hamburger').addClass('icon-menu')
+
+        $('nav').removeClass('is-visible')
+
+    })
 }
+
+MenuHamburger()
 
 function render() {
     favorites()
     updateSlide()
     shareIcon()
-    MenuHamburger()
 }
