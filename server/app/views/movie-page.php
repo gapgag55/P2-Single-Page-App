@@ -88,7 +88,6 @@
     var api = new MovieApi() 
 
     api.getById(<?= $id; ?>, function (data) {
-        console.log(data)
         let {
             id,
             original_title,

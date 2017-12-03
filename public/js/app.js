@@ -130,8 +130,17 @@ function updateSlide() {
     }
 }
 
+function MenuHamburger() {
+    $('.hamburger').on('click', function () {
+        $(this).toggleClass('icon-menu icon-close')
+
+        $('nav').toggleClass('is-visible')
+    })
+}
+
 function render() {
     favorites()
     updateSlide()
     shareIcon()
+    MenuHamburger()
 }
