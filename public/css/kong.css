@@ -99,14 +99,27 @@
     margin-left: -20px;
 }
 
-.favorite-page .movie-fav{
+.favorite-page .movie-fav {
     
     display: flex;
     flex-wrap: wrap;
 }
-.favorite-page .movie{
+.favorite-page .movie {
     margin : 0px;
 }
-.favorite-page .movie-img{
+.favorite-page .movie-img {
     height: 22vw;
+}
+
+@media (max-width: 991px) {
+    .favorite-page .movie-img {
+    height: 37vh;
+    }
+}
+
+@media (max-width:575px) {
+    .favorite-page .movie-img {
+        height: 300px;
+        margin-bottom: 10px;
+    }
 }

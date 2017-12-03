@@ -43,7 +43,10 @@
     #largest-page.movie-list-body .movie {
         margin: 5px;
     }
-    
+    .favorite-page .movie {
+        width: 33%;
+    }
+   
 }
 
 @media (max-width: 575px) { 
@@ -65,10 +68,6 @@
 
     .favorite-page .movie-fav {
         flex-direction: column;
-    }
-
-    .favorite-page .movie-img {
-        height: 300px;
     }
 
     .favorite-page .movie {
@@ -154,6 +153,5 @@
         overflow-y: auto;
         height: 100vh;
     }
-
 }
 
