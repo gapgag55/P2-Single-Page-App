@@ -144,14 +144,14 @@
                         `)
                     })
                 })
+                .then(function () {
+                    playlist()
+                    getApiServer(title)
+                })
 
             return new Promise((resolve, reject) => {
                 resolve(title)
             })
-        })
-        .then(function (title) {
-            playlist()
-            getApiServer(title)
         })
         .then(function () {
             api.getCredits(<?= $id; ?>)
@@ -205,7 +205,7 @@
     }
 
     function playlist() {
-        playlists.find('li').on('click', function () {
+        $(playlists.find('li')).on('click', function () {
             $(this)
                 .addClass('is-active')
                 .siblings()

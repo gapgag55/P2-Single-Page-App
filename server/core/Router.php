@@ -63,7 +63,6 @@ class Router
         /*
          * Remove Folder Name
          */
-        $uri = str_replace($GLOBALS['folder_name'], '', $uri);
        
         if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->callAction(
