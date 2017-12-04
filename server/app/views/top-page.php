@@ -6,29 +6,39 @@
 </div>
 
 <script>
+    // create new API object
     var api = new MovieApi()
+    // set output area
     var output = $('#top-page')
+    // initail the page to be 1
     var page = 1
 
+    // get the top-rating movie by using API
     api.getTopRate({page})
         .then(function (data) {
+            // use the returned data to present in display function
             let results = data.results.map(display)
             output.html(results)
         })
         .then(function () {
+            // crate sharing button 
             shareSocial()
             render()
         })
         .then(function () {
             $(window).scroll(function() {
+                // if user scroll more than html height, add page variable by 1
                 if($(window).scrollTop() + $(window).height() == $(document).height()) {
                     page += 1
+                    // get the next page by using API
                     api.getTopRate({page})
                         .then(function(data) {
+                            // display the data of next page
                             let results = data.results.map(display)
                             output.append(results)
                         })
                         .then(function () {
+                            // create sharing button
                             shareSocial()
                             render()
                         })
@@ -36,6 +46,7 @@
             });
         })
 
+    // the movie-list form to show the information from requesting API
     function display(item) {
         return `
         <div class="movie">
@@ -72,13 +83,16 @@
         `
     }
 
+
     function shareSocial() {
         let url;
         
+        // when the sharing list is clicked
         $('.share li').on('click', function () {
+            // get data from movie key by using API
             api.getById($(this).attr('key'))
                 .then(function (item) {
-
+                    // check that what the sharing list is
                     switch ($(this).attr('type')) {
                         case 'facebook': 
                             url = `https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}`
@@ -91,7 +105,7 @@
                             break;
                     }
 
-
+                    // open new window to share the movie
                     window.open(url, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')
                 }.bind(this))
         })
