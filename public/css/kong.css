@@ -126,4 +126,27 @@
         width: 100%;
         height: 500px;
     }
+
+    .top-page {
+        padding: 0;
+    }
+
+    .movie-single, .favorite-page {
+        padding: 0;
+    }
+
+    .people {
+        padding-top: 0;
+    }
+
+    .movie-list-title .pointer {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .movie-img .action-group {
+        opacity: 1;
+        visibility: visible;
+        transition: all .2s ease;
+    }
 }
