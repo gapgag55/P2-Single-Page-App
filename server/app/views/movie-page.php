@@ -205,7 +205,7 @@
     }
 
     function playlist() {
-        $(playlists.find('li')).on('click', function () {
+        playlists.find('li').on('click', function () {
             $(this)
                 .addClass('is-active')
                 .siblings()

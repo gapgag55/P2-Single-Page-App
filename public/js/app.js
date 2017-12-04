@@ -40,7 +40,6 @@ function favorites() {
                 /*
                  * Remove Movie in browser
                  */
-                console.log("Remove")
                 let index = item.indexOf(id)
                 item.splice(index, 1)
 
@@ -48,6 +47,22 @@ function favorites() {
 
                 $(this).addClass('icon-add')
                 $(this).removeClass('icon-close')
+
+                if ($('.movie-fav').length) {
+                    let parent = $(this).parent().parent().parent()
+
+                    if ($(this).hasClass('icon-add')) {
+                        parent.css({
+                            "-webkit-filter": "grayscale(100%)",
+                            "filter": "grayscale(100%)"
+                        })
+                    } else {
+                        parent.css({
+                            "-webkit-filter": "initial",
+                            "filter": "initial"
+                        })
+                    }
+                }
   
             }
         } else {

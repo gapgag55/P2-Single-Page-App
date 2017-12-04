@@ -28,10 +28,13 @@
                 getFavorites(ids)
             })
             .then(function () {
-                render()
-                getRemove()
+                // getRemove()
             })
     }
+
+    setTimeout(() => {
+        render()
+    }, 1000);
 
     function display(item) {
         return `
@@ -66,22 +69,22 @@
 
     function getRemove() {
         
-        let icons = $('.movie-fav .favorite')
-        icons.on('click', function () {
+        // let icons = $('.movie-fav .favorite')
+        // icons.on('click', function () {
 
-            let parent = $(this).parent().parent().parent()
+        //     let parent = $(this).parent().parent().parent()
 
-            if ($(this).hasClass('icon-add')) {
-                parent.css({
-                    "-webkit-filter": "grayscale(100%)",
-                    "filter": "grayscale(100%)"
-                })
-            } else {
-                parent.css({
-                    "-webkit-filter": "initial",
-                    "filter": "initial"
-                })
-            }
-        })
+        //     if ($(this).hasClass('icon-add')) {
+        //         parent.css({
+        //             "-webkit-filter": "grayscale(100%)",
+        //             "filter": "grayscale(100%)"
+        //         })
+        //     } else {
+        //         parent.css({
+        //             "-webkit-filter": "initial",
+        //             "filter": "initial"
+        //         })
+        //     }
+        // })
     }
 </script>
