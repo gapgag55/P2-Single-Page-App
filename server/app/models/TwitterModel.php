@@ -3,7 +3,7 @@
 namespace App\Model;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use SentimentAnalysis\Analyzer;
+use PHPInsight\Sentiment;
 
 class TwitterModel {
 
@@ -19,18 +19,26 @@ class TwitterModel {
     }
 
     public function searchTweet($keyword) {
-        return $this->twitter->get("search/tweets", [
+        $results = $this->twitter->get("search/tweets", [
             "q" => $keyword,
             "count" => 20
         ]);
+
+        $results = (array) $results;
+        $tweets  = $results["statuses"];
+
+        for($i = 0; $i < sizeof($tweets); $i++) {
+            $score = $this->analysis( $tweets[$i]->text );
+            $tweets[$i]->analysis = $score;
+        }
+
+        return json_encode($tweets);
     }
 
-    // public function analysis() {
-    //     // Analyze the text.
-    //     $result = (Analyzer::withDefaultConfig())
-    //         ->analyze('This PHP package is awesome');
-
-    //     // Get and print the category.
-    //     echo $result->category();
-    // }
+    public function analysis($string) {
+        $sentiment = new Sentiment();
+        $class = $sentiment->categorise($string);
+        
+        return $class;
+    }
 }

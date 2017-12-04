@@ -19,9 +19,9 @@ class MovieController
     }
 
     public function getCommentTwitter() {
-        echo json_encode((new TwitterModel())->searchTweet(
-            $_GET['id']
-        )->statuses);
+        echo (new TwitterModel())->searchTweet(
+                $_GET['id']
+        );
     }
 
     public function getSpotify() {

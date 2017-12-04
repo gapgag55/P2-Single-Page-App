@@ -32,6 +32,16 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPInsight' => 
+            array (
+                0 => __DIR__ . '/..' . '/jwhennessey/phpinsight/lib',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Abraham\\TwitterOAuth\\Config' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Config.php',
         'Abraham\\TwitterOAuth\\Consumer' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Consumer.php',
@@ -52,7 +62,6 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'Abraham\\TwitterOAuth\\Util\\JsonDecoder' => __DIR__ . '/..' . '/abraham/twitteroauth/src/Util/JsonDecoder.php',
         'App\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/controllers/MovieController.php',
         'App\\Controllers\\PageControllers' => __DIR__ . '/../..' . '/app/controllers/PageController.php',
-        'App\\Controllers\\PersonController' => __DIR__ . '/../..' . '/app/controllers/PersonController.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'App\\Model\\SpotifyModel' => __DIR__ . '/../..' . '/app/models/SpotifyModel.php',
@@ -60,6 +69,8 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         'ComposerAutoloaderInitb6a6d478fefe3810f7e1667189769d54' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInitb6a6d478fefe3810f7e1667189769d54' => __DIR__ . '/..' . '/composer/autoload_static.php',
+        'PHPInsight\\Autoloader' => __DIR__ . '/..' . '/jwhennessey/phpinsight/lib/PHPInsight/Autoloader.php',
+        'PHPInsight\\Sentiment' => __DIR__ . '/..' . '/jwhennessey/phpinsight/lib/PHPInsight/Sentiment.php',
         'RequestTest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/RequestTest.php',
         'SessionTest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/SessionTest.php',
         'SpotifyWebAPITest' => __DIR__ . '/..' . '/jwilsson/spotify-web-api-php/tests/SpotifyWebAPITest.php',
@@ -74,6 +85,7 @@ class ComposerStaticInitb6a6d478fefe3810f7e1667189769d54
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitb6a6d478fefe3810f7e1667189769d54::$classMap;
 
         }, null, ClassLoader::class);

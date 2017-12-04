@@ -373,6 +373,7 @@ ul {
   .movie-single,
   .favorite-page {
       padding: 40px 0;
+      overflow: hidden;
   }
   
   .movie-single .bg {
@@ -499,7 +500,7 @@ ul {
   
   .movie-single .icon-share .share::before {
       left: auto;
-      right: 22px;
+      right: 14px;
   }
   
   .movie-single .icon-share li {

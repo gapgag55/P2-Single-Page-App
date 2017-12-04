@@ -58,7 +58,7 @@
             <iframe id="spotify" height="380" frameborder="0" allowtransparency="true"></iframe>
         </div>
         <div class="twitter">
-            <b>Comment <span>67% talked Good From 1,200 comments</span></b>
+            <b>Comment</b>
             <ul id="twitter" class="row"></ul>
         </div>
     </div>
@@ -210,6 +210,7 @@ api.getById(<?= $id; ?>)
 
 
 function getApiServer(title) {
+    let status;
     // use twitter API for getting commet that has title of the movie
     api.getComment(title)
         .then(function(data) {
@@ -218,6 +219,18 @@ function getApiServer(title) {
             let output;
             // create each comment by using data from data variable
             $.each(data, function(index, item) {
+                switch (item.analysis) {
+                    case 'pos':
+                        status = '<span style="color: #2ecc71;">Positive</span>'
+                        break;
+                    case 'neg':
+                        status = '<span style="color: #e74c3c;">Negetive</span>'
+                        break;
+                        status = '<span style="color: #f1c40f;">Neutral</span>'
+                    case 'neu':
+                        break;
+                }
+
                 output = `
                     <li class="row col-6">
                         <div class="col-3">
@@ -226,6 +239,7 @@ function getApiServer(title) {
                         <div class="col-9">
                             <b>${item.user.name}</b>
                             <p>${item.text}</p>
+                            <p>${status} comment</p>
                         </div>
                     </li>
                     `
