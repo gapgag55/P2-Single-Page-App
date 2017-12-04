@@ -36,6 +36,7 @@ function favorites() {
                 
                 $(this).addClass('icon-close')
                 $(this).removeClass('icon-add')
+
             } else {
                 /*
                  * Remove Movie in browser
@@ -47,24 +48,9 @@ function favorites() {
 
                 $(this).addClass('icon-add')
                 $(this).removeClass('icon-close')
-
-                if ($('.movie-fav').length) {
-                    let parent = $(this).parent().parent().parent()
-
-                    if ($(this).hasClass('icon-add')) {
-                        parent.css({
-                            "-webkit-filter": "grayscale(100%)",
-                            "filter": "grayscale(100%)"
-                        })
-                    } else {
-                        parent.css({
-                            "-webkit-filter": "initial",
-                            "filter": "initial"
-                        })
-                    }
-                }
-  
             }
+
+            favoritesPage.call(this)
         } else {
             localStorage.setItem('favorites', JSON.stringify([id]));
 
@@ -73,6 +59,24 @@ function favorites() {
         }
 
     })
+}
+
+function favoritesPage() {
+    if ($('.movie-fav').length) {
+        let parent = $(this).parent().parent().parent()
+
+        if ($(this).hasClass('icon-add')) {
+            parent.css({
+                "-webkit-filter": "grayscale(100%)",
+                "filter": "grayscale(100%)"
+            })
+        } else {
+            parent.css({
+                "-webkit-filter": "initial",
+                "filter": "initial"
+            })
+        }
+    }
 }
 
 function shareIcon() {

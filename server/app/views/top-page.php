@@ -14,6 +14,9 @@
         .then(function (data) {
             let results = data.results.map(display)
             output.html(results)
+        })
+        .then(function () {
+            shareSocial()
             render()
         })
         .then(function () {
@@ -42,15 +45,15 @@
                     <i class="icon-share">
                         <div class="share">
                             <ul>
-                                <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="facebook">
                                     <i class="icon-facebook"></i>
                                     <p>Facebook</p>
                                 </li>
-                                <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="twitter">
                                     <i class="icon-twitter"></i>
                                     <p>Twitter</p>
                                 </li>
-                                <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="line">
                                     <i class="icon-line"></i>
                                     <p>Line</p>
                                 </li>
@@ -68,5 +71,28 @@
         `
     }
 
-    render()
+    function shareSocial() {
+        let url;
+        
+        $('.share li').on('click', function () {
+            api.getById($(this).attr('key'))
+                .then(function (item) {
+
+                    switch ($(this).attr('type')) {
+                        case 'facebook': 
+                            url = `https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}`
+                            break;
+                        case 'twitter':
+                            url = `http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}`
+                            break;
+                        case 'line':
+                            url = `https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}`
+                            break;
+                    }
+
+
+                    window.open(url, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')
+                }.bind(this))
+        })
+    }
 </script>
