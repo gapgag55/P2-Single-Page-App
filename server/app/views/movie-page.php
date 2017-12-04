@@ -232,10 +232,10 @@ function getApiServer(title) {
                 twitter.append(output)
             })
         })
-    /*
-    * send API request by using title of the movie
-    * and create spotify playlist
-    */
+    /** 
+     * send API request by using title of the movie
+     * and create spotify playlist
+     */
 
     api.getSpotify(title)
         .then(function(data) {
@@ -245,6 +245,13 @@ function getApiServer(title) {
 }
 
 function playlist() {
+    /** 
+     * when any list was click
+     * change class's that list to be is-active
+     * and others to become ""
+     * then change src of ifame to be that link
+     */
+
     playlists.find('li').on('click', function () {
         $(this)
             .addClass('is-active')

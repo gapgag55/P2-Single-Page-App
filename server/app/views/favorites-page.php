@@ -6,18 +6,29 @@
 </div>
 
 <script>
+    // create new API object
     var api = new MovieApi();
+    // set the output area
     var output = $('#favorite')
 
+    // get the value of variable that named favorites which is in local storage
     var ids = localStorage.getItem('favorites');
+    // change JSON to become Array
     var res = Array.from(JSON.parse(ids))
+    // use value in array to create list of favorite movie
     getFavorites(res)
 
     function getFavorites(ids) {
+        // if ids is empty, do not thing
         if (ids[0] == null) {
             return
         }
 
+        /**
+         * create the movie slide of first position in the array
+         * then split the first position and then call getFavorites function
+         * by using the array after splicing
+         */
         api.getById(ids[0])
             .then(function (data) {
                 let result = display(data)
@@ -28,11 +39,12 @@
                 getFavorites(ids)
             })
     }
-
+    // delay 0.1 second then run render()
     setTimeout(() => {
         render()
     }, 100);
 
+    // the movie-list form to show the information from requesting API
     function display(item) {
         return `
             <div class="movie">
