@@ -15,15 +15,22 @@
 </div>
 
 <script>
+    // output-area
     var output = $('#movie-slide')
+    // crate new Themoviedb.org api
     var api = new MovieApi()
 
     api.getUpComing()
         .then(function (data) {
+            /**
+             * get result from Themoviedb.org after requesting api
+             * then create each display and append to output-area (id = "movie-slide")
+             */
             let results = data.results.map(display)
             output.html(results)
         })
         .then(function () {
+            
             render()
         })
         .then(function () {
