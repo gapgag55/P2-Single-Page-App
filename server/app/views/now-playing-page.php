@@ -21,7 +21,7 @@
         })
         .then(function () {
             $(window).scroll(function() {
-                if($(window).scrollTop() + $(window).height() > $(document).height() / 1.5) {
+                if($(window).scrollTop() + $(window).height() == $(document).height()) {
                     page += 1
                     api.getNowPlaying({page})
                         .then(function(data) {
@@ -29,6 +29,7 @@
                             output.append(results)
                         })
                         .then(function () {
+                            shareSocial()
                             render()
                         })
                 }

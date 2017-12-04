@@ -20,7 +20,7 @@ api.getPersonPopular({page})
     })
     .then(function () {
         $(window).scroll(function() {
-            if($(window).scrollTop() + $(window).height() > $(document).height() / 1.5) {
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 page += 1
                 api.getPersonPopular({page})
                     .then(function(data) {
