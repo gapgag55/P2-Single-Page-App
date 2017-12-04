@@ -14,7 +14,10 @@ Router.prototype.render = function (response) {
   let self = this
   
   this.app.html(response)
-
+  /**
+   * use href attibute in tag "a" for send AJAX to router 
+   * to open the correct page
+   */
   $('a').off('click').on('click', function (e) {
     e.preventDefault()
 
