@@ -6,21 +6,36 @@
 </div>
 
 <script>
+    // create new API object
     var api = new MovieApi()
+    // set the output area
     var output = $('#playing-page')
+    // initail the page for loading
     var page = 1
 
+    // sending NowPlaying API
     api.getNowPlaying({page})
         .then(function (data) {
+            // create display form result that return from send API
             let results = data.results.map(display)
+            // set results in output area
             output.html(results)
         })
         .then(function () {
+            // set sharing button
             shareSocial()
+            // check movie list which is clicked
             render()
         })
         .then(function () {
             $(window).scroll(function() {
+                /**
+                 * if scrolling height is equal to html height
+                 * add 1 to page variable
+                 * then send new API by using new page value
+                 * show the result of sending API
+                 * then create sharing button
+                 */
                 if($(window).scrollTop() + $(window).height() == $(document).height()) {
                     page += 1
                     api.getNowPlaying({page})
@@ -35,7 +50,7 @@
                 }
             })
         })
-
+    // the movie-list form to show the information from requesting API
     function display(item) {
         return `
         <div class="movie">
