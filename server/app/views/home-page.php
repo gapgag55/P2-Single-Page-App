@@ -31,6 +31,7 @@ api.getUpComing()
     })
     .then(function () {
         // check each movie-list that was clicked favorite or not.
+        shareSocial()
         render()
     })
     .then(function () {
@@ -63,6 +64,7 @@ api.getUpComing()
                              * if result of requesting API is empty 
                              * show "Oops! the movie was not found"
                              */
+                            shareSocial()
                             render()
                             if ( output.is(':empty') ) {
                                 output.html("Oops! The movie was not found!")
@@ -98,15 +100,15 @@ function display(item) {
                     <i class="icon-share">
                         <div class="share">
                             <ul>
-                                <li onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="facebook">
                                     <i class="icon-facebook"></i>
                                     <p>Facebook</p>
                                 </li>
-                                <li onclick="window.open('http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="twitter">
                                     <i class="icon-twitter"></i>
                                     <p>Twitter</p>
                                 </li>
-                                <li onclick="window.open('https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')">
+                                <li key=${item.id} type="line">
                                     <i class="icon-line"></i>
                                     <p>Line</p>
                                 </li>
@@ -120,6 +122,33 @@ function display(item) {
             <div class="movie-detail">${item.vote_average} / 10 STARS</div>
         </div>
         `
+}
+
+function shareSocial() {
+    let url;
+    
+    // when the sharing list is clicked
+    $('.share li').on('click', function () {
+        // get data from movie key by using API
+        api.getById($(this).attr('key'))
+            .then(function (item) {
+                // check that what the sharing list is
+                switch ($(this).attr('type')) {
+                    case 'facebook': 
+                        url = `https://www.facebook.com/sharer/sharer.php?u=http://www.imdb.com/title/${item.imdb_id}`
+                        break;
+                    case 'twitter':
+                        url = `http://twitter.com/share?text=${item.original_title}&url=http://www.imdb.com/title/${item.imdb_id}`
+                        break;
+                    case 'line':
+                        url = `https://lineit.line.me/share/ui?url=http://www.imdb.com/title/${item.imdb_id}`
+                        break;
+                }
+
+                // open new window to share the movie
+                window.open(url, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=400,width=600,height=500')
+            }.bind(this))
+    })
 }
 
 </script>
