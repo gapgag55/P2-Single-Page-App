@@ -1,4 +1,5 @@
 function favorites() {
+    console.log("OK")
     /*
      * Check Favorites
      */
@@ -12,7 +13,6 @@ function favorites() {
         // if the movie ID is in local storage change cross sign to plus sign
         if (item) {
             if (item.indexOf(id) >= 0) {
-                
                 $(this).addClass('icon-close')
                 $(this).removeClass('icon-add')
             }
@@ -213,11 +213,11 @@ function MenuHamburger() {
     })
 }
 
-
 MenuHamburger()
 
 function render() {
     // render screen of the whole website
+    console.log('render')
     favorites()
     updateSlide()
     shareIcon()

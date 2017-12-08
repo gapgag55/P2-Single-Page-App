@@ -38,9 +38,26 @@
                 ids.splice(0, 1)
                 getFavorites(ids)
             })
+            .then(function () {
+                $.each($('.favorite'), function (index, value) {
+                    // get value in key attribute
+                    let id =  $(this).attr('key')
+                    // get value in local storage that is named favorites
+                    let item = localStorage.getItem('favorites')
+
+                    // if the movie ID is in local storage change cross sign to plus sign
+                    if (item) {
+                        if (item.indexOf(id) >= 0) {
+                            $(this).addClass('icon-close')
+                            $(this).removeClass('icon-add')
+                        }
+                    }
+                })
+            })
     }
+    
     // delay 0.1 second then run render()
-    setTimeout(() => {
+    setTimeout(function() {
         render()
     }, 100);
 
